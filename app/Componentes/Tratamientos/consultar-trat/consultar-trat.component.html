@@ -1,0 +1,90 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Consultar tratamiento
+</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <h3 class="text-center">Búsqueda por fechas</h3>
+            <div class="border p-4 rounded mx-auto">
+                <div class="container ">
+                    <div class="mb-3 row">
+                        <label for="fechaDesde" class="form-label col-sm-4 text-right col-form-label">Fecha
+                            desde</label>
+                        <div class="col-xl-8">
+                            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="fechaHasta" class="form-label col-sm-4 text-right col-form-label">Fecha
+                            hasta</label>
+                        <div class="col-xl-8">
+                            <input type="date" class="form-control" [(ngModel)]="fechaFin">
+                        </div>
+                    </div>
+
+
+
+                    <br>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary" (click)="cargarTratamientos()">Buscar</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-secondary">Limpiar</button>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
+                <!-- <input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios"> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
+
+<!-- Luego de traer la lista aparece buscador -->
+<div *ngIf="buscador" class="row">
+
+    <div class="container col-4">
+        <h3 class="text-center">Búsqueda por coincidencia</h3>
+        <input type="text" class="form-control" name="filtroTrat" placeholder="Buscar por Id de Lote, Raza o Especie"
+            [(ngModel)]="filtroTrat">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Tratamiento</th>
+                    <th scope="col">Medicacion</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Fin</th>
+                    <th scope="col">Dias de tratamiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trat of listaTratamientos | filtroTrat: filtroTrat">
+                    <td>{{ trat.especie }}</td>
+                    <td>{{ trat.raza }}</td>
+                    <td>{{ trat.nombreTratamiento }}</td>
+                    <td>{{ trat.medicacion }}</td>
+                    <td>{{ formatFechaIngreso(trat.fechaInicio) }}</td>
+                    <td>{{ formatFechaIngreso(trat.fechaFin) }}</td>
+                    <td class="text-right">{{ trat.diasDeTratamiento | customNumber }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

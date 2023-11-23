@@ -1,0 +1,98 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Planificar Alimentación</h1>
+  </div>
+<br>
+<h3>Listado de Lotes</h3>
+<br>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-2"></div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+        </div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaFin">
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary" (click)="cargarLotes()">Buscar</button>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <!-- <input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios"> -->
+</div>
+<br>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha Ingreso</th>
+                    <th scope="col">Finalidad</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Edad en meses</th>
+                    <th scope="col">Cantidad de Animales</th>
+                    <th scope="col">Peso Total</th>
+                    <th scope="col">Planificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lote of listaLotes">
+                    <th scope="row">{{lote.idLote}}</th>
+                    <td >{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
+                    <td>{{ lote.finalidad }}</td>
+                    <td>{{ lote.especie }}</td>
+                    <td>{{ lote.raza }}</td>
+                    <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadAnimales | customNumber}}</td>
+                    <td class="text-right">{{ lote.pesoTotal| customNumber }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="asignarDieta(lote.idLote)">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div *ngIf="asigDieta" class="tag" [formGroup]="formularioGroup">
+    <div class="form-group">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Dieta</th>
+                    <th>Fecha Desde</th>
+                    <th>Fecha Hasta</th>
+                    <th>Toneladas diarias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select class="form-control" formControlName="idDieta">
+                            <option [ngValue]="dieta.idDieta" *ngFor="let dieta of dietas">{{ dieta.nombreDieta }}
+                            </option>
+
+                        </select>
+                    </td>
+                    <td>
+                        <input type="date" class="form-control" formControlName="fechaInicio">
+                    </td>
+                    <td>
+                        <input type="date" class="form-control" formControlName="fechaFin">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" formControlName="cantToneladaDiaria">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="guardarPlani()">Guardar</button>
+</div>
+

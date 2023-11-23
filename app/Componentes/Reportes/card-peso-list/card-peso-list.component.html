@@ -1,0 +1,157 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Peso de animales
+</h1>
+
+<form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+    <div class="mb-3 row text-center">
+        <div class="col-4"></div>
+        <label for="especie" class="form-label col-sm-1 text-right col-form-label">Especie</label>
+        <div class="col-sm-3">
+            <select class="form-select" id="especie" formControlName="especie">
+                <option *ngFor="let especie of listaEspecies" [value]="especie.idEspecie">
+                    {{ especie.nombreEspecie }}
+                </option>
+            </select>
+        </div>
+    </div>
+</form>
+<br>
+<div class="container">
+    <!-- <div class="card-group"> -->
+        <div class="row row-cols-1 row-cols-md-3 g-3" style="align-items: center;">
+            <div class="col-3">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header text-center">CANTIDAD DE ANIMALES</div>
+                    <div class="card-body p-3 text-center">
+                        <!-- <h5 class="card-title">Success card title</h5> -->
+                        <p class="card-text">{{cantTotalAnimales | customNumber}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header text-center">PESO TOTAL POR ESPECIE</div>
+                    <div class="card-body p-3 text-center">
+                        <!-- <h5 class="card-title">Success card title</h5> -->
+                        <p class="card-text">{{pesoTotalAnimales | customNumber}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header text-center">PESO PROMEDIO POR ANIMAL</div>
+                    <div class="card-body p-3 text-center">
+                        <!-- <h5 class="card-title">Success card title</h5> -->
+                        <p class="card-text">{{pesoPromAnimal | customNumber}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row" style="align-items: center;"> -->
+            <!-- <div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-3">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header">CANTIDAD DE ANIMALES</div>
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                
+                                <h5 class="font-weight-bolder">
+                                    {{cantTotalAnimales | customNumber}}
+                                </h5>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> -->
+            <!-- <div class="col-xl-4 col-sm-6 mb-xl-0 mb-3">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">PESO TOTAL POR ESPECIE</div>
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            
+                            <h5 class="font-weight-bolder">
+                                {{pesoTotalAnimales | customNumber }}
+                            </h5>
+                            
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+            <!-- <div class="col-xl-4 col-sm-6 mb-xl-0 mb-3">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">PESO PROMEDIO POR ANIMAL</div>
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            
+                            <h5 class="font-weight-bolder">
+                                {{pesoPromAnimal | customNumber}}
+                            </h5>
+                           
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        </div>
+    
+</div>
+
+
+<br>
+<h3>Listado de Lotes</h3>
+<br>
+
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha Ingreso</th>
+                    <th scope="col">Finalidad</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Edad en meses</th>
+                    <th scope="col">Cantidad de Animales</th>
+                    <th scope="col">Peso Total</th>
+                    <th scope="col">Peso promedio por Animal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lote of listaLotes">
+                    <th scope="row">{{lote.idLote}}</th>
+                    <td>{{ formatFechaIngreso(lote.fechaIngreso) }}</td>
+                    <td>{{ lote.finalidad }}</td>
+                    <td>{{ lote.especie }}</td>
+                    <td>{{ lote.raza }}</td>
+                    <td>{{ lote.edadMeses }}</td>
+                    <td class="text-right">{{ lote.cantidadAnimales | customNumber}}</td>
+                    <td class="text-right">{{ lote.pesoTotal | customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoPromedioPorAnimal| customNumber }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

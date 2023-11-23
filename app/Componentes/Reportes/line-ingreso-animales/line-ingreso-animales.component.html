@@ -1,0 +1,22 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Ingreso de animales
+</h1>
+
+<form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+    <div class="row text-center">
+
+        <div class="col-3"></div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio" formControlName="fechaInicio">
+        </div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaFin" formControlName="fechaFin">
+        </div>
+        <div class="col-3"></div>
+
+    </div>
+</form>
+
+<div style="width: 60%; margin: auto; height: 60%;">
+    <canvas id="lineChart"></canvas>
+  </div>

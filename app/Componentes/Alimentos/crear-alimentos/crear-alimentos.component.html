@@ -1,0 +1,123 @@
+<!-- <h1 class="display-4 font-weight-bold text-center text-muted mb-5" >INGRESO DE ALIMENTOS</h1>
+<div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-10 text-center">
+    
+<form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+    <div class="container text-center">
+        <div class="mb-3 row text-center">
+            <label for="nombreAlimento" class="form-label col-sm-3">Alimento</label>
+            <div class="col-sm-9 text-center">
+                <input type="text" class="form-control" formControlName="nombreAlimento" id="nombreAlimento">
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3 text-center">
+                <button type="submit" class="btn btn-primary" (click)="guardar2()">Guardar</button>
+            </div>
+            <div class="col-sm-3 text-center">
+                <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+            </div>
+            <div class="col-sm-3"></div>
+
+        </div>
+
+        <div class="row text-center">
+            <div class="col-5"></div>
+            <div class="col-4">
+                <br>
+                <div class="text-center">
+                    <table id="listado" class="table table-hover text-center">
+                        <thead class="encabezado">
+                            <tr class="text-muted">
+                                <th scope="col">Nombre de Alimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ali of listaAlimentos">
+                                <td>{{ ali.nombreAlimento }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+    </div>
+</form>
+</div>
+</div>
+<div class="col-2">
+</div> -->
+
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Registrar nuevo alimento</h1>
+
+    <div class="row " style="justify-content: center;">
+
+        <div class="col-4" style="margin-left: 100px; margin-right: 50px;">
+            <div class="border p-4 rounded mx-auto">
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+                    <div></div>
+                    <!-- <div class="mb-3 row justify-content-center">
+                <label for="nombreAlimento" class="form-label">Alimento:</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="nombreAlimento" id="nombreAlimento">
+                </div>
+                </div> -->
+
+
+                    <div class="row text-center">
+                        <div class="col-1"></div>
+                        <div class="col-3">
+                            <label for="nombreAlimento" class="form-label col-sm-4 text-right col-form-label">Alimento</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" formControlName="nombreAlimento"
+                                id="nombreAlimento">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center" style="margin-left: 30px; margin-right: 30px;">
+                        <br>
+                        
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary" (click)="guardar2()">Guardar</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- <div class="row mt-4 justify-content-center"> -->
+        
+        <div class="col-4" style="align-items: center; margin-left: 50px; margin-right: 100px;">
+            <div class="border p-4 rounded mx-auto">
+                <div class="text-center" >
+                    <table id="listado" class="table table-hover">
+                        <thead class="encabezado">
+                            <tr class="text-muted text-center">
+                                <th scope="col">Alimentos existentes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngFor="let ali of listaAlimentos">
+                                <td>{{ ali.nombreAlimento }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

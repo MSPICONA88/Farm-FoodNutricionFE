@@ -1,0 +1,25 @@
+.custom-card-primary {
+    background: linear-gradient(135deg, #a7d5e9, #9dd689);
+}
+
+.custom-card-danger {
+    background: linear-gradient(135deg, #ffc2b4, #ff7d6b);
+}
+
+.custom-card-success {
+    background: linear-gradient(135deg, #b6f8d1, #83e2af);
+}
+
+.encabezado{
+    background-color: #68d6b6 ;
+  }
+
+
+
+  .center-header {
+    text-align: center;
+  }
+  
+  .text-right {
+    text-align: right;
+  }

@@ -1,0 +1,17 @@
+input {
+    width: 300px;
+  }
+
+  select{
+    width: 300px;
+  }
+
+  .jumbotron {
+    background-color:rgb(163, 213, 177);
+  
+  }
+
+  .encabezado{
+    background-color: #68d6b6 ;
+  }
+ 

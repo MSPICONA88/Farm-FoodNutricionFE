@@ -1,0 +1,115 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Registrar tratamiento
+</h1>
+
+<!-- CONTENEDOR DE LA PAGINA -->
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-2"></div> <!-- Espacio de margen izquierdo -->
+
+        <div class="col-sm-8"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-lote"
+                                value="lote" [(ngModel)]="selectedOption">
+                            <label class="form-check-label" for="radio-lote">
+                                Tratamiento por lote
+                            </label>
+                        </div>
+                        <!-- <input type="radio" id="radio-lote" name="radio-group" value="lote" [(ngModel)]="selectedOption">
+                        <label for="radio-lote">Tratamiento por lote</label> -->
+                    </div>
+                    <br>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-animal"
+                                value="animal" [(ngModel)]="selectedOption">
+                            <label class="form-check-label" for="radio-animal">
+                                Tratamiento por animal
+                            </label>
+                        </div>
+                        <!-- <input type="radio" id="radio-animal" name="radio-group" value="animal" [(ngModel)]="selectedOption">
+                        <label for="radio-animal">Tratamiento por animal</label> -->
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+
+
+                <br>
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+
+                    <div class="container">
+                        <div class="mb-3 row" *ngIf="selectedOption === 'lote'">
+                            <label for="id_lote" class="form-label col-sm-3">Id de Lote</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" formControlName="Id" id="Id">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row" *ngIf="selectedOption === 'animal'">
+                            <label for="id_lote" class="form-label col-sm-3">Id de Animal</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" formControlName="Id" id="Id">
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="mb-3 row">
+                            <label for="idTipoTrat" class="form-label col-sm-3">Tipo de tratamiento:</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" id="idTipoTrat" formControlName="idTipoTrat">
+                                    <option *ngFor="let tipoTrat of listaTiposTrat"
+                                        [value]="tipoTrat.idTipoTratamiento">
+                                        {{ tipoTrat.descripcion }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-3 row">
+                            <label for="medicacion" class="form-label col-sm-3">Medicación</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" formControlName="medicacion" id="medicacion">
+                            </div>
+
+                        </div>
+
+                        <br>
+                        <div class="mb-3 row">
+                            <label for="fechaInicio" class="form-label col-sm-3">Fecha Inicio</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" formControlName="fechaInicio" id="fechaInicio">
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="mb-3 row">
+                            <label for="fechaFin" class="form-label col-sm-3">Fecha Fin</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" formControlName="fechaFin" id="fechaFin">
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-2"></div> <!-- Espacio de margen derecho -->
+        </div>
+    </div>
+</div>

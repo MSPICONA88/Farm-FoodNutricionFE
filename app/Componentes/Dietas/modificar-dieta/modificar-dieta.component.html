@@ -1,0 +1,174 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Editar dieta</h1>
+</div>
+
+<div class="container" style="text-align: right;">
+    <div class="row">
+        <div class="col-sm-3"></div> <!-- Espacio de margen izquierdo -->
+
+        <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto">
+                <form [formGroup]="dietaForm" (ngSubmit)="guardar()">
+                    <div class="form-group mb-3 row">
+                        <label class="form-label col-sm-3 text-right col-form-label" for="nombreDieta">Nombre
+                            Dieta</label>
+                        <div class="col-xl-8">
+                            <input type="text" class="form-control" id="nombreDieta" formControlName="nombreDieta">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3 row">
+                        <label class="form-label col-sm-3 text-right col-form-label" for="fechaCreacion">Fecha
+                            Creación</label>
+                        <div class="col-xl-8">
+                            <input type="text" class="form-control" id="fechaCreacion" formControlName="fechaCreacion">
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3 row">
+                        <label class="form-label col-sm-3 text-right col-form-label"
+                            for="observacion">Observación</label>
+                        <div class="col-xl-8">
+                            <textarea class="form-control form-control-md" rows="5" id="observacion"
+                                formControlName="observacion"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Prueba 1 -->
+                    <!-- <div class="form-group">
+                        <label>Alimentos</label>
+                        <div formArrayName="alimentos">
+                        <div *ngFor="let alimento of alimentosFormArray.controls; let i = index" [formGroupName]="i">
+                            <input type="hidden" formControlName="idAlimento">
+                            <label for="porcentaje">Porcentaje</label>
+                            <input type="text" class="form-control" id="porcentaje" formControlName="porcentaje">
+                        </div>
+                        </div>
+                    </div>       -->
+
+                    <!-- Prueba 2 -->
+                    <!-- <div class="form-group">
+                        <label>Alimentos</label>
+                        <div formArrayName="alimentos">
+                            <div *ngFor="let alimento of alimentosFormArray.controls; let i = index" [formGroupName]="i">
+                                <input type="hidden" formControlName="idAlimento">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="nombreAlimento">Alimento</label>
+                                    </div>
+                                    <div class="row">
+                                        <input type="text" class="form-control" id="nombreAlimento" formControlName="nombreAlimento">
+                                    </div>
+                                </div>
+                                
+                                <label for="porcentaje">Porcentaje</label>
+                                <input type="text" class="form-control" id="porcentaje" formControlName="porcentaje">
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="form-group">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Alimento</th>
+                                    <th>Porcentaje</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div formArrayName="alimentos">
+                                        <tr *ngFor="let alimento of alimentosFormArray.controls; let i = index"
+                                        [formGroupName]="i">
+                                            <td>
+                                                <input type="text" class="form-control" formControlName="nombreAlimento">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" formControlName="porcentaje">
+                                            </td>
+                                        </tr>
+                                    
+                                </div>
+                            </tbody>
+                        </table>
+                    </div> -->
+
+                    <!-- Prueba 3 -->
+                    <br>
+
+                    <div>
+                        <button class="btn btn-primary" (click)="agregarAlimento()">Agregar Alimento</button>
+                    </div>
+                    <br>
+
+                    <div class="form-group table-responsive">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 30%;">Alimento</th>
+                                    <th scope="col" style="width: 30%;">Porcentaje</th>
+                                    <th scope="col" style="width: 30%;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <!-- <tbody formArrayName="alimentos">
+                    <ng-container *ngFor="let alimento of alimentosFormArray.controls; let i = index" [formGroupName]="i">
+                    <tr>
+                        <td>
+                            <select class="form-control" formControlName="idAlimento">
+                                <option [value]="alimento.idAlimento" *ngFor="let alimento of listaAlimentos">{{
+                                    alimento.nombreAlimento }}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" formControlName="porcentaje">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" (click)="eliminarDetalle(i)">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </ng-container>
+                    </tbody> -->
+                            <tbody formArrayName="alimentos">
+                                <ng-container *ngFor="let alimento of alimentosFormArray.controls; let i = index"
+                                    [formGroupName]="i">
+                                    <tr>
+                                        <td class="align-items-center">
+                                            <select class="form-control text-center" formControlName="idAlimento">
+                                                <option [ngValue]="alimentoOption.idAlimento"
+                                                    *ngFor="let alimentoOption of listaAlimentos">{{
+                                                    alimentoOption.nombreAlimento }}</option>
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control text-center"
+                                                    formControlName="porcentaje">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- <td>
+                                            <input type="number" class="form-control text-center" formControlName="porcentaje">
+                                        </td> -->
+                                        <td class="align-middle">
+                                            <button class="btn btn-danger btn-sm" (click)="eliminarDetalle(i)">
+                                                <i class="bi bi-x"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

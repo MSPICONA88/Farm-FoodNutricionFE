@@ -1,0 +1,49 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Animales disponibles
+</h1>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+            <div class="container">
+                <div class="mb-3 row">
+                    <label for="especie" class="form-label col-sm-4 text-right col-form-label">Especie</label>
+                    <div class="col-sm-7">
+                        <select class="form-select" id="especie" formControlName="especie">
+                            <option *ngFor="let especie of listaEspecies" [value]="especie.idEspecie">
+                                {{ especie.nombreEspecie }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="raza" class="form-label col-sm-4 text-right col-form-label">Raza</label>
+                    <div class="col-sm-7">
+                        <select class="form-select" id="raza" formControlName="raza">
+                            <option *ngFor="let raza of listaRazas" [value]="raza.idRaza">
+                                {{ raza.nombreRaza }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<!-- <canvas baseChart type="bar" [data]="datos"> -->
+<!-- <canvas baseChart type="bar" [data]="datos">
+    </canvas> -->
+<div class="container ">
+    <div class="row">
+        <div class="col-10">
+            
+        </div>
+    </div>
+</div>
+
+<!-- <canvas id="stackedBar">
+</canvas> -->
+<div style="width: 60%; margin: auto; height: 50%;">
+    <canvas id="stackedBar"></canvas>
+  </div>

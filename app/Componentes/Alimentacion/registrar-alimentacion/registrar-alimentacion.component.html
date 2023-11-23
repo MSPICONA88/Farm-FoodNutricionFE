@@ -1,0 +1,73 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Registrar Alimentación</h1>
+  </div>
+<br>
+<h3>Listado de Planes al dia de hoy: {{formatFechaIngreso(fechaActual)}}</h3>
+<br>
+<br>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col">Id Plan</th>
+                    <th scope="col">Id Lote</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Dieta</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Fin</th>
+                    <th scope="col">Toneladas</th>
+                    <th scope="col">Cantidad animales</th>
+                    <th scope="col">Cantidad x dia x animal</th>
+                    <th scope="col">Registrar Alimentacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plan of listaPlanes">
+                    <th scope="row">{{plan?.idPlan}}</th>
+                    <td>{{ plan.idLote }}</td>
+                    <td>{{ plan.nombreEspecie }}</td>
+                    <td>{{ plan.raza }}</td>
+                    <td>{{ plan.nombreDieta }}</td>
+                    <td>{{ formatFechaIngreso(plan.fechaInicio) }}</td>
+                    <td>{{ formatFechaIngreso(plan.fechaFin) }}</td>
+                    <td class="text-right">{{ plan.cantToneladaDiaria | customNumber }}</td>
+                    <td class="text-right">{{ plan.cantidad | customNumber }}</td>
+                    <td class="text-right">{{ plan.cantPorDiaPorAnimal | customNumber}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" (click)="tomarIdPlan(plan?.idPlan)">
+                            <i class="bi bi-plus"></i>
+                          </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div *ngIf="asigIdPlan" class="tag" [formGroup]="formularioGroup">
+    <div class="form-group">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha de Alimentacion</th>
+                    <th>Cantidad dispensada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="date" class="form-control" formControlName="fechaAlimentacion">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" formControlName="toneladasDispensadas">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="registrarAli()">Guardar</button>
+</div>

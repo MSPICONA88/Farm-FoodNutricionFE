@@ -1,0 +1,56 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Ingresar stock
+</h1>
+<div class="container" style="text-align: right;">
+    <div class="row">
+        <div class="col-sm-3"></div> <!-- Espacio de margen izquierdo -->
+
+        <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto">
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+                    <div class="container">
+                        <div class="mb-3 row">
+                            <label for="idAlimento" class="form-label col-sm-4 text-right col-form-label">Alimento</label>
+                            <div class="col-sm-7">
+                                <select class="form-select" id="idAlimento" formControlName="idAlimento">
+                                    <option *ngFor="let ali of listaAlimentos" [value]="ali.idAlimento">
+                                        {{ ali.nombreAlimento }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="fechaRegistro" class="form-label col-sm-4 text-right col-form-label">Fecha de registro</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control" formControlName="fechaRegistro"
+                                    id="fechaRegistro">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="toneladas" class="form-label col-sm-4 text-right col-form-label">Toneladas</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="toneladas" id="toneladas">
+                            </div>
+
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="precioTonelada" class="form-label col-sm-4 text-right col-form-label">Precio Tonelada</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="precioTonelada"
+                                    id="precioTonelada">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row text-center">
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary" (click)="guardar2()">Guardar</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                    </div>
+
+                </div>

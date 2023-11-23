@@ -1,0 +1,46 @@
+<!-- <br>
+<h3>Listado de Usuarios</h3>
+<br> -->
+
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+  Consultar Usuarios
+</h1>
+
+<div class="container col-4">
+<input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios">
+</div>
+<br>
+<div class="container">
+<table id="listado" class="table table-hover text-center">
+    <thead class="encabezado">
+        <tr class="text-muted">
+            <th scope="col">Nombre y Apellido</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rol</th>
+            <!-- <th scope="col">Descuento</th> -->
+            <!-- <th scope="col">Cantidad Disponible</th> -->
+            <!-- <th scope="col">Sucursal</th> -->
+          </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let user of users | filter: filterUsuarios">
+            
+            
+            <td>{{ user.nombreApellido }}</td>
+            <td>{{ user.nombreUsuario }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.rol }}</td>
+            
+            
+        </tr>
+      </tbody>
+
+    <tbody>
+      
+    </tbody>
+  </table>
+  
+  
+</div>

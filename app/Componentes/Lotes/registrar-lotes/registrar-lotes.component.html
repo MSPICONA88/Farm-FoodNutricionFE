@@ -1,0 +1,94 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Registrar lote
+</h1>
+
+<div class="container" style="text-align: right;">
+    <div class="row">
+        <div class="col-sm-3"></div> <!-- Espacio de margen izquierdo -->
+
+        <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto">
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+                    <div class="container">
+                        <!-- <div class="mb-3 row">
+                        <label for="fechaIngreso" class="form-label col-sm-3">Fecha de ingreso</label>
+                        <div class="col-sm-9">
+                     <input type="date" class="form-control" formControlName="fechaIngreso" id="fechaIngreso">
+                        </div>
+
+                        </div> -->
+                        <div class="mb-3 row">
+                            <label for="cantidad" class="form-label col-sm-3">Cantidad</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" formControlName="cantidad" id="cantidad">
+                            </div>
+
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="pesoTotal" class="form-label col-sm-3">Peso total</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" formControlName="pesoTotal" id="pesoTotal">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="finalidad" class="form-label col-sm-3">Finalidad</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" id="finalidad" formControlName="finalidad">
+                                    <option *ngFor="let fin of listaFinalidades" [value]="fin.idFinalidad">
+                                        {{ fin.nombreFinalidad }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="especie" class="form-label col-sm-3">Especie</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" id="especie" formControlName="especie">
+                                    <option *ngFor="let especie of listaEspecies" [value]="especie.idEspecie">
+                                        {{ especie.nombreEspecie }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="raza" class="form-label col-sm-3">Raza</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" id="raza" formControlName="raza">
+                                    <option *ngFor="let raza of listaRazas" [value]="raza.idRaza">
+                                        {{ raza.nombreRaza }}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="edadMeses" class="form-label col-sm-3">Edad en meses</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" formControlName="edadMeses" id="edadMeses">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+                <div class="row text-center">
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

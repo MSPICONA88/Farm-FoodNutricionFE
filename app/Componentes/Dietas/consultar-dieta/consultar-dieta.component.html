@@ -1,0 +1,76 @@
+<div class="container text-center">
+  <h1 class="display-4 font-weight-bold text-muted mb-5">Listado de dietas</h1>
+</div>
+
+<br>
+
+
+<div class="row">
+
+  <div class="container col-4">
+    <input type="text" class="form-control" name="filtroDietas" placeholder="Buscar por nombre de Dieta o Alimento"
+      [(ngModel)]="filtroDietas">
+  </div>
+
+</div>
+
+<br>
+<div class="row">
+  
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="row">
+        <div class="align-items-center">
+          <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+              <tr class="text-muted text-center">
+                <th scope="col">Nombre Dieta</th>
+                <th scope="col">Fecha Creación</th>
+                <th scope="col">Alimentos</th>
+                <th scope="col">Porcentajes</th>
+                <th scope="col">Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let dieta of dietas | filtroDietas: filtroDietas">
+                <td>{{ dieta.nombreDieta }}</td>
+                <td>{{ dieta.fechaCreacion }}</td>
+                <td>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item " *ngFor="let alimento of dieta.alimentos">{{ alimento.nombreAlimento }}
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let alimento of dieta.alimentos ">{{ alimento.porcentaje +'%'}}
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-pencil-fill" [routerLink]="['/modificardieta', dieta.idDieta] "></i>
+                  </button>
+                  <button class="btn btn-danger">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- <div *ngFor="let dieta of dietas">
+    <h2>{{ dieta.nombreDieta }}</h2>
+    <p>Observación: {{ dieta.observacion }}</p>
+    <ul>
+      <li *ngFor="let alimento of dieta.alimentos">
+        {{ alimento.nombreAlimento }} - Porcentaje: {{ alimento.porcentaje }}
+      </li>
+    </ul>
+    </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  
+</div>

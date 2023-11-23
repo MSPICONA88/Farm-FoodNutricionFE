@@ -1,0 +1,60 @@
+<div class="container text-center">
+  <h1 class="display-4 font-weight-bold text-muted mb-5">Stock necesario</h1>
+</div>
+
+<h3>Control de Stock Alimentos</h3>
+<br>
+
+
+<div class="row">
+
+  <div class="container col-4">
+    <input type="text" class="form-control" name="filtroStock" placeholder="Buscar por estado de Stock"
+      [(ngModel)]="filtroStock">
+  </div>
+
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="">
+      <table id="listado" class="table table-hover text-center">
+        <thead class="encabezado">
+          <tr>
+            <th scope="col">Nombre de Alimento</th>
+            <th scope="col">Stock actual</th>
+            <th scope="col">Stock necesario</th>
+            <th scope="col">Cantidad a comprar</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of listadoStock | filtroStock: filtroStock">
+            <td>{{ stock.nombreAlimento }}</td>
+            <td>{{ stock.stockActual }}</td>
+            <td>{{ stock.stockNecesario }}</td>
+            <td>{{ stock.cantidadAComprar }}</td>
+            <td>
+                <!-- <button class="btn btn-outline-primary">{{ stock.estado }}</button> -->
+                <!-- <span class="badge badge-sm bg-gradient-success">{{ stock.estado }}</span> -->
+                <button type="button" class="btn" [ngClass]="{
+                    'btn-outline-danger': stock.estado === 'SIN STOCK', 
+                    'btn-outline-warning': stock.estado === 'MUY BAJO',
+                    'btn-outline-primary': stock.estado === 'BAJO',
+                    'btn-outline-success': stock.estado === 'OK',
+                    'btn-outline-dark': stock.estado === 'SOBRESTOCK'}">
+                    {{ stock.estado }}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- <div *ngFor="let dieta of dietas">
+    <h2>{{ dieta.nombreDieta }}</h2>
+    <p>Observación: {{ dieta.observacion }}</p>
+    <ul>
+      <li *ngFor="let alimento of dieta.alimentos">
+        {{ alimento.nombreAlimento }} - Porcentaje: {{ alimento.porcentaje }}
+      </li>
+    </ul>
+  </div> -->
