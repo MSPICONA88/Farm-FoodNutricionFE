@@ -2,7 +2,7 @@ export class Lote {
     idLote: number;
     fechaIngreso: string;
     cantidadAnimales: number;
-    pesoTotal: number;
+    pesoIngreso: number;
     idFinalidad: number;
     idEspecie: number;
     idRaza: number;
@@ -10,6 +10,9 @@ export class Lote {
     ok?: boolean;
     error?: string;
     statusCode?: string;
+    cantidadActual: number;
+    pesoEgreso?: number;
+    fechaEgreso?: number;
 
 
 }

@@ -143,6 +143,7 @@ export class RegistrarAlimentacionComponent {
                 icon: 'error',
                 confirmButtonText: 'Ok',
               });
+              this.limpiarForm();
             }
           },
           error: (err: any) => {

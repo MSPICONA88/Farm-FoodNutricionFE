@@ -1,8 +1,8 @@
 <div class="container text-center">
-    <h1 class="display-4 font-weight-bold text-muted mb-5">Planificar Alimentación</h1>
-  </div>
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Planificar alimentación</h1>
+</div>
 <br>
-<h3>Listado de Lotes</h3>
+<h3>Listado de lotes</h3>
 <br>
 <div class="container">
     <div class="row text-center">
@@ -22,7 +22,8 @@
 </div>
 <br>
 <div class="row">
-    <div class="">
+    <div class="col-1"></div>
+    <div class="col-10">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
                 <tr>
@@ -33,20 +34,20 @@
                     <th scope="col">Raza</th>
                     <th scope="col">Edad en meses</th>
                     <th scope="col">Cantidad de Animales</th>
-                    <th scope="col">Peso Total</th>
+                    <!-- <th scope="col">Peso inicial</th> -->
                     <th scope="col">Planificar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lote of listaLotes">
+                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
                     <th scope="row">{{lote.idLote}}</th>
-                    <td >{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
+                    <td>{{ formatFechaIngreso(lote.fechaIngreso) }}</td>
                     <td>{{ lote.finalidad }}</td>
                     <td>{{ lote.especie }}</td>
                     <td>{{ lote.raza }}</td>
                     <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
-                    <td class="text-right">{{ lote.cantidadAnimales | customNumber}}</td>
-                    <td class="text-right">{{ lote.pesoTotal| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadActual | customNumber}}</td>
+                    <!-- <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td> -->
                     <td>
                         <button class="btn btn-danger btn-sm" (click)="asignarDieta(lote.idLote)">
                             <i class="bi bi-plus"></i>
@@ -55,9 +56,14 @@
                 </tr>
             </tbody>
         </table>
+
     </div>
 </div>
 
+<div class="row">
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
+        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>
+</div>
 
 <div *ngIf="asigDieta" class="tag" [formGroup]="formularioGroup">
     <div class="form-group">
@@ -95,4 +101,3 @@
     <br>
     <button type="submit" class="btn btn-primary" (click)="guardarPlani()">Guardar</button>
 </div>
-

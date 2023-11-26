@@ -9,3 +9,11 @@
 .text-right {
   text-align: right;
 }
+
+.arrow-up {
+  color: green; /* color verde para la flecha hacia arriba */
+}
+
+.arrow-down {
+  color: red; /* color rojo para la flecha hacia abajo */
+}

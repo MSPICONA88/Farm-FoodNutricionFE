@@ -1,0 +1,121 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Egresar lote</h1>
+</div>
+<div class="container" style="text-align: right;">
+    <div class="row">
+        <div class="col-sm-3"></div> <!-- Espacio de margen izquierdo -->
+        <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto">
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+                    <div class="container">
+                        <!-- <div class="mb-3 row">
+                            <label for="idLote" class="form-label col-sm-4 text-right col-form-label">IdLote</label>
+                            <div class="col-sm-7">
+                                <label type="number" class="form-control" formControlName="idLote" id="idLote">
+                                </label>
+                            </div>
+                        </div> -->
+                        <div class="mb-3 row">
+                            <label for="fechaIngreso" class="form-label col-sm-4 text-right col-form-label">Fecha de ingreso</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control" formControlName="fechaIngreso"
+                                    id="fechaIngreso">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="cantidad" class="form-label col-sm-4 text-right col-form-label">Cantidad inicial</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="cantidadAnimales"
+                                    id="cantidad">
+                            </div>
+
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="pesoIngreso" class="form-label col-sm-4 text-right col-form-label">Peso ingreso</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="pesoIngreso" id="pesoIngreso">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="finalidad" class="form-label col-sm-4 text-right col-form-label">Finalidad</label>
+                            <div class="col-sm-7">
+                                <select class="form-select" id="IdFinalidad" formControlName="idFinalidad">
+                                    <option *ngFor="let fin of listaFinalidades" [value]="fin.idFinalidad">
+                                        {{ fin.nombreFinalidad }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="especie" class="form-label col-sm-4 text-right col-form-label">Especie</label>
+                            <div class="col-sm-7">
+                                <select class="form-select" id="idEspecie" formControlName="idEspecie">
+                                    <option *ngFor="let especie of listaEspecies" [value]="especie.idEspecie">
+                                        {{ especie.nombreEspecie }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="raza" class="form-label col-sm-4 text-right col-form-label">Raza</label>
+                            <div class="col-sm-7">
+                                <select class="form-select" id="idRaza" formControlName="idRaza">
+                                    <option *ngFor="let raza of listaRazas" [value]="raza.idRaza">
+                                        {{ raza.nombreRaza }}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="edadMeses" class="form-label col-sm-4 text-right col-form-label">Edad en meses</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="edadMeses" id="edadMeses">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="cantidadActual" class="form-label col-sm-4 text-right col-form-label">Cantidad actual</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control" formControlName="cantidadActual" id="cantidadActual" >
+                            </div>
+                        </div>
+
+                        
+                    
+                        <div class="mb-3 row">
+                            <label for="fechaEgreso" class="form-label col-sm-4 text-right col-form-label">Fecha de egreso</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control" formControlName="fechaEgreso"
+                                    id="fechaEgreso">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="pesoEgreso" class="form-label col-sm-4 text-right col-form-label">Peso egreso</label>
+                            <div class="col-sm-7">
+                                <input type="number" class="form-control " formControlName="pesoEgreso" id="pesoEgreso">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <div class="row text-center">
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,40 +7,46 @@
 </h1>
 
 <div class="container col-4">
-<input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios">
+  <input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..."
+    [(ngModel)]="filterUsuarios">
 </div>
 <br>
 <div class="container">
-<table id="listado" class="table table-hover text-center">
-    <thead class="encabezado">
-        <tr class="text-muted">
-            <th scope="col">Nombre y Apellido</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Email</th>
-            <th scope="col">Rol</th>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <table id="listado" class="table table-hover text-center">
+        <thead class="encabezado">
+          <tr class="text-muted">
+            <th scope="col" class="col-3">Nombre y Apellido</th>
+            <th scope="col" class="col-3">Usuario</th>
+            <th scope="col" class="col-3">Email</th>
+            <th scope="col" class="col-2">Rol</th>
             <!-- <th scope="col">Descuento</th> -->
             <!-- <th scope="col">Cantidad Disponible</th> -->
             <!-- <th scope="col">Sucursal</th> -->
           </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
 
-        <tr *ngFor="let user of users | filter: filterUsuarios">
-            
-            
+          <tr *ngFor="let user of users | filter: filterUsuarios">
+
+
             <td>{{ user.nombreApellido }}</td>
             <td>{{ user.nombreUsuario }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.rol }}</td>
-            
-            
-        </tr>
-      </tbody>
 
-    <tbody>
-      
-    </tbody>
-  </table>
-  
-  
+
+          </tr>
+        </tbody>
+
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
 </div>

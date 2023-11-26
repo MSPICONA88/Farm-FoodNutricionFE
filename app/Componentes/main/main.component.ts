@@ -201,4 +201,6 @@ export class MainComponent {
     this.cleanFlags();
     this.isConsultarPlani = true;
   }
+
+  
 }

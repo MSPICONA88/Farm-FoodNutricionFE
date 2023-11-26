@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ConsultarPlaniComponent {
   listadoStock: StockReport[]=[];
-
+  page: number;
   public formulario : FormGroup;
   filtroStock: string = '' ;
 

@@ -1,8 +1,8 @@
 <div class="container text-center">
-    <h1 class="display-4 font-weight-bold text-muted mb-5">Consultar Lotes</h1>
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Actualizar lotes</h1>
   </div>
 <br>
-<h3>Listado de Lotes</h3>
+<h3>Gestión de lotes</h3>
 <br>
 <div class="container">
     <div class="row text-center">
@@ -32,29 +32,33 @@
                     <th scope="col">Especie</th>
                     <th scope="col">Raza</th>
                     <th scope="col">Edad en meses</th>
-                    <th scope="col">Cantidad de Animales</th>
-                    <th scope="col">Peso Total</th>
-                    <th scope="col">Accion</th>
+                    <th scope="col">Cantidad de animales</th>
+                    <th scope="col">Peso ingreso</th>
+                    <th scope="col">Cantidad de bajas</th>
+                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lote of listaLotes">
+                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
                     <th scope="row">{{lote.idLote}}</th>
                     <td>{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
                     <td>{{ lote.finalidad }}</td>
                     <td>{{ lote.especie }}</td>
                     <td>{{ lote.raza }}</td>
                     <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
-                    <td class="text-right">{{ lote.cantidadAnimales| customNumber }}</td>
-                    <td class="text-right">{{ lote.pesoTotal| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadActual| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadBajas | customNumber}}</td>
                     <td>
                         <button class="btn btn-primary">
                             <i class="bi bi-pencil-fill" [routerLink]="['/modificarlote', lote.idLote] " (click)="mostrarComponente()"></i>
                         </button>
                         <button class="btn btn-danger">
-                            <i class="bi bi-trash-fill" [routerLink]="['/deletelote', lote.idLote] "></i>
+                            <i class="bi bi-trash-fill" (click)="eliminarLote(lote.idLote)"></i>
                         </button>
-
+                        <button class="btn btn-primary">
+                            <i class="bi bi-arrow-right" [routerLink]="['/egresarLotes', lote.idLote] " (click)="mostrarComponente()"></i>
+                        </button>
                         <!-- <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
                         <button class="btn btn-danger"><i class="bi bi-trash"></i></button> -->
 
@@ -82,8 +86,10 @@
         </table>
     </div>
 
-    <!-- <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"></pagination-controls>
 
+    
 
 </div>
 

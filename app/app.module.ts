@@ -37,8 +37,17 @@ import { FiltroStockPipe } from './Pipes/filtro-stock.pipe';
 import { PreguntasFrecuentesComponent } from './Componentes/home/preguntas-frecuentes/preguntas-frecuentes.component';
 import { CustomNumberPipe } from './Pipes/custom-number.pipe';
 import { LOCALE_ID } from '@angular/core';
+import { TerminosYCondicionesComponent } from './Componentes/home/terminos-ycondiciones/terminos-ycondiciones.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { EgresarLotesComponent } from './Componentes/Lotes/egresar-lotes/egresar-lotes.component';
+import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/quitar-animales.component';
+import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
 
 
+// Registra la configuración regional para "es-ES"
+registerLocaleData(localeEs);
 
 
 
@@ -76,7 +85,11 @@ import { LOCALE_ID } from '@angular/core';
     ConsultarPlaniComponent,
     FiltroStockPipe,
     PreguntasFrecuentesComponent,
-    CustomNumberPipe
+    CustomNumberPipe,
+    TerminosYCondicionesComponent,
+    EgresarLotesComponent,
+    QuitarAnimalesComponent,
+    ListaLotesComponent
     
   ],
   imports: [
@@ -84,7 +97,8 @@ import { LOCALE_ID } from '@angular/core';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-ES' }],
   bootstrap: [AppComponent]

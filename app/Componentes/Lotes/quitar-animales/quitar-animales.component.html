@@ -1,0 +1,74 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Quitar animales</h1>
+</div>
+<br>
+<h3>Listado de lotes</h3>
+<br>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-2"></div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+        </div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaFin">
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary" (click)="cargarLotes()">Buscar</button>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <!-- <input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios"> -->
+</div>
+<br>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col" data-sortable="true">#</th>
+                    <th scope="col" data-sortable="true">Fecha Ingreso</th>
+                    <th scope="col" data-sortable="true">Finalidad</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Edad en meses</th>
+                    <th scope="col">Cantidad de animales</th>
+                    <th scope="col">Peso ingreso</th>
+                    <th scope="col">Cantidad de bajas</th>
+                    <th scope="col">Quitar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{lote.idLote}}</th>
+                    <td>{{ formatFechaIngreso(lote.fechaIngreso) }}</td>
+                    <td>{{ lote.finalidad }}</td>
+                    <td>{{ lote.especie }}</td>
+                    <td>{{ lote.raza }}</td>
+                    <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadActual| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadBajas | customNumber}}</td>
+
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="quitarAnimales(lote.idLote)">
+                            <i class="bi bi-dash-square-fill"></i>
+                        </button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
+        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>
+
+
+
+</div>
+
+<div>
+    <app-modificar-lote *ngIf="mostrarModificarLote"></app-modificar-lote>
+    <br>
+</div>

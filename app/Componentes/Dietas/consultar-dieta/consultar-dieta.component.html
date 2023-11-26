@@ -32,12 +32,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="align-middle text-center" *ngFor="let dieta of dietas | filtroDietas: filtroDietas">
+              <tr class="align-middle text-center" *ngFor="let dieta of dietas | filtroDietas: filtroDietas |  paginate: { itemsPerPage: 5, currentPage: page }">
                 <td>{{ dieta.nombreDieta }}</td>
                 <td>{{ dieta.fechaCreacion }}</td>
                 <td>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item " *ngFor="let alimento of dieta.alimentos">{{ alimento.nombreAlimento }}
+                    <li class="list-group-item " *ngFor="let alimento of dieta.alimentos " >{{ alimento.nombreAlimento }}
                     </li>
                   </ul>
                 </td>
@@ -49,10 +49,10 @@
                 </td>
                 <td>
                   <button class="btn btn-primary">
-                    <i class="bi bi-pencil-fill" [routerLink]="['/modificardieta', dieta.idDieta] "></i>
+                     <i class="bi bi-pencil-fill" (click)="verificarUsoDieta(dieta.idDieta)" ></i> <!-- [routerLink]="['/modificardieta', dieta.idDieta] " -->
                   </button>
                   <button class="btn btn-danger">
-                    <i class="bi bi-trash-fill"></i>
+                    <i class="bi bi-trash-fill" (click)="deleteDieta(dieta.idDieta)"></i>
                   </button>
                 </td>
               </tr>
@@ -74,3 +74,5 @@
     <div class="col-2"></div>
   
 </div>
+<pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"></pagination-controls>

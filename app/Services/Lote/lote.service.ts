@@ -22,7 +22,7 @@ export class LoteService {
   postCreate(lote: Lote): Observable<any> {
     const comando = {
       "cantidadAnimales": lote.cantidadAnimales,
-      "pesoTotal": lote.pesoTotal,
+      "pesoIngreso": lote.pesoIngreso,
       "idFinalidad": lote.idFinalidad,
       "idRaza": lote.idRaza,
       "edadMeses": lote.edadMeses
@@ -48,6 +48,10 @@ export class LoteService {
     return this.http.post(url, body, { 'headers': headers })
   }
 
+  lotePorFechaDef(): Observable<any> {
+    return this.http.get<any>(this.apiUrlBase + '/getLotesPorFechasDef');
+  }
+
   modificarLote(idLote: number, lote: ComandoLote): Observable<any>{
     const body = JSON.stringify(lote);
     const headers = { 'content-type': 'application/json' };
@@ -68,5 +72,26 @@ export class LoteService {
   getLotesPorEspecie(idEspecie: string): Observable<any> {
     const url = `${this.URL2}?idEspecie=${idEspecie}`;
     return this.http.get<any>(url);
+  }
+
+
+  listadoLotesDispPorFecha(fechaInicio: string, fechaFin: string): Observable<any> {
+    const comando = {
+          "fechaInicio": fechaInicio,
+          "fechaFin": fechaFin
+    }
+    const url = this.apiUrlBase + '/getLotesDisponibles';
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(comando);
+
+    console.log(body);
+    return this.http.post(url, body, { 'headers': headers })
+  }
+
+
+  quitarAnimales(idLote: number, cantidadAnimalesADarDeBaja: number): Observable<any>{
+    const headers = { 'content-type': 'application/json' };
+    const url = this.apiUrlBase + '/bajaAnimales';
+    return this.http.put<any>(url+'/'+idLote+'/'+cantidadAnimalesADarDeBaja, { 'headers': headers });
   }
 }

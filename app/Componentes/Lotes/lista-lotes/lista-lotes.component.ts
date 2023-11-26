@@ -6,11 +6,11 @@ import { LoteService } from 'src/app/Services/Lote/lote.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-consultar-lote',
-  templateUrl: './consultar-lote.component.html',
-  styleUrls: ['./consultar-lote.component.css']
+  selector: 'app-lista-lotes',
+  templateUrl: './lista-lotes.component.html',
+  styleUrls: ['./lista-lotes.component.css']
 })
-export class ConsultarLoteComponent {
+export class ListaLotesComponent {
   fechaInicio: string;
   fechaFin: string;
   listaLotes: any = [];
@@ -22,33 +22,23 @@ export class ConsultarLoteComponent {
   constructor(
     private loteService: LoteService,
     private router: Router) {
-    this.cargarLotesDef();
+    //this.cargarLotesDef();
   }
   private subscription = new Subscription();
   ngOnInit(): void {
-    this.cargarLotesDef();
+    //this.cargarLotesDef();
   }
 
 
 
   cargarLotesDef() {
-    // Obtener la fecha de hoy
-    const fechaFin = new Date();
-
-    // Obtener la fecha del primer día del mes anterior
-    const fechaInicio = new Date();
-    fechaInicio.setMonth(fechaInicio.getMonth() - 1);
-    fechaInicio.setDate(1);
-
-    // Formatear las fechas según tus necesidades
-    const fechaInicioString = this.formatearFecha(fechaInicio);
-    const fechaFinString = this.formatearFecha(fechaFin);
     this.subscription.add(
-      this.loteService.listadoLotesDispPorFecha(fechaInicioString, fechaFinString).subscribe(
+      this.loteService.lotePorFechaDef().subscribe(
         (data) => {
           if (data.ok) {
-            this.listaLotes = data.listaLotesDispPorFecha;
-            console.log(this.listaLotes)
+            this.listaLotes = data.listaLotesPorFecha;
+
+            //alert(this.listaUsuarios[0].rol)
           }
           else {
             Swal.fire({
@@ -65,10 +55,10 @@ export class ConsultarLoteComponent {
 
   cargarLotes() {
     this.subscription.add(
-      this.loteService.listadoLotesDispPorFecha(this.fechaInicio, this.fechaFin).subscribe(
+      this.loteService.lotePorFecha(this.fechaInicio, this.fechaFin).subscribe(
         (data) => {
           if (data.ok) {
-            this.listaLotes = data.listaLotesDispPorFecha;
+            this.listaLotes = data.listaLotesPorFecha;
             console.log(this.listaLotes)
           }
           else {
@@ -99,20 +89,12 @@ export class ConsultarLoteComponent {
 
   }
 
-  formatearFecha(fecha: Date): string {
-    const year = fecha.getFullYear();
-    const month = fecha.getMonth() + 1;
-    const day = fecha.getDate();
-  
-    // Asegurarse de que month y day tengan dos dígitos
-    const monthString = month < 10 ? '0' + month : '' + month;
-    const dayString = day < 10 ? '0' + day : '' + day;
-  
-    return `${year}-${monthString}-${dayString}`;
-  }
-
-  formatFechaIngreso(fechaIngreso: string): string {
+  formatFechaIngreso(fechaIngreso: string| null): string | null {
     // Convertir la cadena a un objeto Date
+    // Verificar si fechaIngreso es null
+    if (fechaIngreso === null) {
+      return null;
+    }
     const dateObject = new Date(fechaIngreso);
 
     // Obtener los componentes de la fecha

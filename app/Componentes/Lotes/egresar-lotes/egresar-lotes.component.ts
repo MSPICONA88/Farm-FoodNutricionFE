@@ -1,22 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Especie } from 'src/app/Interfaces/especie';
 import { Lote } from 'src/app/Interfaces/Lote';
+import { Especie } from 'src/app/Interfaces/especie';
 import { Raza } from 'src/app/Interfaces/raza';
 import { EspecieService } from 'src/app/Services/Lote/Especie/especie.service';
 import { FinalidadService } from 'src/app/Services/Lote/Finalidad/finalidad.service';
-import { LoteService } from 'src/app/Services/Lote/lote.service';
 import { RazaService } from 'src/app/Services/Lote/Raza/raza.service';
+import { LoteService } from 'src/app/Services/Lote/lote.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-modificar-lote',
-  templateUrl: './modificar-lote.component.html',
-  styleUrls: ['./modificar-lote.component.css']
+  selector: 'app-egresar-lotes',
+  templateUrl: './egresar-lotes.component.html',
+  styleUrls: ['./egresar-lotes.component.css']
 })
-export class ModificarLoteComponent {
+export class EgresarLotesComponent {
   formularioGroup: FormGroup;
   especie: Especie = new Especie();
   raza: Raza = new Raza();
@@ -46,16 +46,28 @@ export class ModificarLoteComponent {
       idLote: [],
       fechaIngreso: ['', [Validators.required]],
       cantidadAnimales: ['', [Validators.required]],
-      pesoTotal: ['', [Validators.required]],
+      cantidadActual: ['', [Validators.required]],
+      pesoIngreso: ['', [Validators.required]],
       idFinalidad: ['', [Validators.required]],
       idEspecie: ['', [Validators.required]],
       idRaza: ['', [Validators.required]],
-      edadMeses: ['', [Validators.required]]
+      edadMeses: ['', [Validators.required]],
+      pesoEgreso: ['', [Validators.required]],
+      fechaEgreso: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {
-    
+    this.formularioGroup?.get('fechaIngreso')?.disable();
+    this.formularioGroup?.get('cantidadAnimales')?.disable();
+    this.formularioGroup?.get('cantidadActual')?.disable();
+    this.formularioGroup?.get('pesoIngreso')?.disable();
+    this.formularioGroup?.get('idFinalidad')?.disable();
+    this.formularioGroup?.get('idEspecie')?.disable();
+    this.formularioGroup?.get('idRaza')?.disable();
+    this.formularioGroup?.get('edadMeses')?.disable();
+
+
     this.cargarListadoFinalidad();
     this.getEspecies();
 
@@ -158,27 +170,53 @@ export class ModificarLoteComponent {
   guardar() {
     this.idLote= this.activatedRoute.snapshot.params['idLote'];
     if (this.formularioGroup.valid) {
-      this.lote.fechaIngreso= this.formularioGroup.value.fechaIngreso;
-      this.lote.cantidadAnimales = this.formularioGroup.value.cantidadAnimales;
-      this.lote.pesoIngreso = this.formularioGroup.value.pesoTotal;
-      this.lote.idFinalidad = this.formularioGroup.value.idFinalidad;
-      this.lote.idRaza = this.formularioGroup.value.idRaza;
-      this.lote.edadMeses = this.formularioGroup.value.edadMeses;
 
+
+      this.formularioGroup.get('fechaIngreso')?.enable();
+      this.formularioGroup.get('cantidadAnimales')?.enable();
+      this.formularioGroup.get('pesoIngreso')?.enable();
+      this.formularioGroup.get('idFinalidad')?.enable();
+      this.formularioGroup.get('idRaza')?.enable();
+      this.formularioGroup.get('edadMeses')?.enable();
+      this.formularioGroup.get('cantidadActual')?.enable();
+      // this.formularioGroup.get('pesoEgreso')?.enable();
+      // this.formularioGroup.get('fechaEgreso')?.enable();
+
+
+
+      // this.lote.fechaIngreso= this.formularioGroup.value.fechaIngreso;
+      // this.lote.cantidadAnimales = this.formularioGroup.value.cantidadAnimales;
+      // this.lote.pesoIngreso = this.formularioGroup.value.pesoIngreso;
+      // this.lote.idFinalidad = this.formularioGroup.value.idFinalidad;
+      // this.lote.idRaza = this.formularioGroup.value.idRaza;
+      // this.lote.edadMeses = this.formularioGroup.value.edadMeses;
+      // this.lote.cantidadActual = this.formularioGroup.value.cantidadActual;
+      // this.lote.pesoEgreso = this.formularioGroup.value.pesoEgreso;
+      // this.lote.fechaEgreso = this.formularioGroup.value.fechaEgreso;
+
+      this.lote = this.formularioGroup.value;
       console.log(this.lote)
       this.subscription.add(
         this.loteService.modificarLote(this.idLote, this.lote).subscribe({
           next: (respuesta) => {
             if (respuesta.ok) {
               Swal.fire({
-                title: 'Lote modificado con éxito',
+                title: 'Lote egresado con éxito',
                 icon: 'success',
                 confirmButtonText: 'Ok',
               }).then(() => {
                 this.limpiarForm();
+                this.router.navigate(['consultarLotes'])
               });
             } else {
-              alert('No se pudo modificar el lote');
+              Swal.fire({
+                title: respuesta.error,
+                icon: 'error',
+                confirmButtonText: 'Ok',
+              }).then(() => {
+                this.limpiarForm();
+                this.router.navigate(['consultarLotes']);
+              });
             }
           },
           error: (err: any) => {
@@ -208,14 +246,14 @@ export class ModificarLoteComponent {
       confirmButtonText: 'Si',
       cancelButtonText: 'No'
     }).then((result) => {
-      this.irAHome();
+      this.irAListado();
     })
 
-    this.irAHome();
+    
   }
 
-  private irAHome() {
-    this.router.navigate(['']);
+  private irAListado() {
+    this.router.navigate(['consultarLotes']);
   }
 
   get controlId(): FormControl {
@@ -227,8 +265,12 @@ export class ModificarLoteComponent {
   get controlCantidad(): FormControl {
     return this.formularioGroup.controls['cantidadAnimales'] as FormControl
   }
+
+  get controlCantActual(): FormControl {
+    return this.formularioGroup.controls['cantidadActual'] as FormControl
+  }
   get controlPeso(): FormControl {
-    return this.formularioGroup.controls['pesoTotal'] as FormControl
+    return this.formularioGroup.controls['pesoIngreso'] as FormControl
   }
   get controlFinalidad(): FormControl {
     return this.formularioGroup.controls['idFinalidad'] as FormControl

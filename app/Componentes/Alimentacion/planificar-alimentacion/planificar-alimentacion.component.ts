@@ -26,6 +26,7 @@ export class PlanificarAlimentacionComponent {
   asigDieta: boolean = false;
   dietas: Dieta[] = [];
   idLote: number;
+  page: number;
  
 
   constructor(
@@ -35,6 +36,7 @@ export class PlanificarAlimentacionComponent {
     private dietaService: DietaService,
     private alimentacionServ: AlimentacionService
     ) { 
+      this.cargarLotesDef();
       this.formularioGroup = this.formBuilder.group({
         idDieta: ['', Validators.required],
         fechaInicio: ['', Validators.required],
@@ -141,6 +143,27 @@ export class PlanificarAlimentacionComponent {
   limpiarForm(): void {
     this.formularioGroup.reset();
     // this.comandoPlani.clear();
+  }
+
+  cargarLotesDef() {
+    this.subscription.add(
+      this.loteService.lotePorFechaDef().subscribe(
+        (data) => {
+          if (data.ok) {
+            this.listaLotes = data.listaLotesPorFecha;
+            
+            //alert(this.listaUsuarios[0].rol)
+          }
+          else {
+            Swal.fire({
+              title: 'Error al obtener el listado de lotes',
+              icon: 'error',
+              confirmButtonText: "Ok"
+            });
+          }
+        }
+      )
+    );
   }
 
   formatFechaIngreso(fechaIngreso: string): string {

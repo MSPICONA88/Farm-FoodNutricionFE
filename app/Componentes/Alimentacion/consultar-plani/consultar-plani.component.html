@@ -17,7 +17,8 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-1"></div>
+    <div class="col-10">
       <table id="listado" class="table table-hover text-center">
         <thead class="encabezado">
           <tr>
@@ -29,26 +30,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stock of listadoStock | filtroStock: filtroStock">
-            <td>{{ stock.nombreAlimento }}</td>
-            <td>{{ stock.stockActual }}</td>
-            <td>{{ stock.stockNecesario }}</td>
-            <td>{{ stock.cantidadAComprar }}</td>
+          <tr
+            *ngFor="let stock of listadoStock | filtroStock: filtroStock |  paginate: { itemsPerPage: 10, currentPage: page }">
+            <td >{{ stock.nombreAlimento}}</td>
+            <td class="text-right">{{ stock.stockActual| customNumber }}</td>
+            <td class="text-right">{{ stock.stockNecesario| customNumber }}</td>
+            <td class="text-right">{{ stock.cantidadAComprar| customNumber }}</td>
             <td>
-                <!-- <button class="btn btn-outline-primary">{{ stock.estado }}</button> -->
-                <!-- <span class="badge badge-sm bg-gradient-success">{{ stock.estado }}</span> -->
-                <button type="button" class="btn" [ngClass]="{
+              <!-- <button class="btn btn-outline-primary">{{ stock.estado }}</button> -->
+              <!-- <span class="badge badge-sm bg-gradient-success">{{ stock.estado }}</span> -->
+              <button type="button" class="btn" [ngClass]="{
                     'btn-outline-danger': stock.estado === 'SIN STOCK', 
                     'btn-outline-warning': stock.estado === 'MUY BAJO',
                     'btn-outline-primary': stock.estado === 'BAJO',
                     'btn-outline-success': stock.estado === 'OK',
                     'btn-outline-dark': stock.estado === 'SOBRESTOCK'}">
-                    {{ stock.estado }}</button>
+                {{ stock.estado }}</button>
             </td>
           </tr>
         </tbody>
       </table>
+      <br>
+      <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior"
+        nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"></pagination-controls>
 
+      <div class="col-1"></div>
       <!-- <div *ngFor="let dieta of dietas">
     <h2>{{ dieta.nombreDieta }}</h2>
     <p>Observación: {{ dieta.observacion }}</p>

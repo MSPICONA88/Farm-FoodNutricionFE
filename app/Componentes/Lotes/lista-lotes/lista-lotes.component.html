@@ -1,0 +1,81 @@
+<div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Listado de lotes</h1>
+  </div>
+<br>
+<!-- <h3>Gestión de lotes</h3>
+<br> -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-2"></div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+        </div>
+        <div class="col-3">
+            <input type="date" class="form-control" [(ngModel)]="fechaFin">
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary" (click)="cargarLotes()">Buscar</button>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <!-- <input type="text" class="form-control" name="filterUsuarios" placeholder="Buscar Usuario..." [(ngModel)]="filterUsuarios"> -->
+</div>
+<br>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha ingreso</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Finalidad</th>
+                    <th scope="col">Edad en meses</th>
+                    <th scope="col">Cantidad inicial</th>
+                    <th scope="col">Peso ingreso</th>
+                    <th scope="col">Cantidad actual</th>
+                    <th scope="col">Cantidad bajas</th>
+                    <th scope="col">Fecha egreso</th>
+                    <th scope="col">Peso egreso</th>
+                    <!-- <th scope="col">Acción</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{lote.idLote}}</th>
+                    <td>{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
+                    <td>{{ lote.especie }}</td>
+                    <td>{{ lote.raza }}</td>
+                    <td>{{ lote.finalidad }}</td>
+                    <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadAnimales| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadActual| customNumber }}</td>
+                    <td class="text-right">{{ lote.cantidadBajas| customNumber }}</td>
+                    <td>{{ formatFechaIngreso(lote.fechaEgreso)}}</td>
+                    <td class="text-right">{{ lote.pesoEgreso }}</td>
+                    <!-- <td>
+                        <button class="btn btn-primary">
+                            <i class="bi bi-pencil-fill" [routerLink]="['/modificarlote', lote.idLote] " (click)="mostrarComponente()"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="bi bi-trash-fill" (click)="eliminarLote(lote.idLote)"></i>
+                        </button>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"></pagination-controls>
+
+    
+
+</div>
+
+<div>
+    <app-modificar-lote *ngIf="mostrarModificarLote"></app-modificar-lote>
+<br>
+</div>

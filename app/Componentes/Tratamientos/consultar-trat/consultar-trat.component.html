@@ -2,7 +2,7 @@
     Consultar tratamiento
 </h1>
 
-<div class="container">
+<div class="container" style="text-align: right;">
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
@@ -12,14 +12,14 @@
                     <div class="mb-3 row">
                         <label for="fechaDesde" class="form-label col-sm-4 text-right col-form-label">Fecha
                             desde</label>
-                        <div class="col-xl-8">
+                        <div class="col-xl-6">
                             <input type="date" class="form-control" [(ngModel)]="fechaInicio">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="fechaHasta" class="form-label col-sm-4 text-right col-form-label">Fecha
                             hasta</label>
-                        <div class="col-xl-8">
+                        <div class="col-xl-6">
                             <input type="date" class="form-control" [(ngModel)]="fechaFin">
                         </div>
                     </div>
@@ -27,7 +27,7 @@
 
 
                     <br>
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col-3"></div>
                         <div class="col-3">
                             <button type="submit" class="btn btn-primary" (click)="cargarTratamientos()">Buscar</button>
@@ -57,18 +57,19 @@
     </div>
 </div>
 <br>
-<div class="row">
-    <div class="">
+<div class="row text-center">
+    <div class="col-2"></div>
+    <div class="col-8">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
                 <tr>
                     <th scope="col">Especie</th>
                     <th scope="col">Raza</th>
                     <th scope="col">Tratamiento</th>
-                    <th scope="col">Medicacion</th>
+                    <th scope="col">Medicación</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Fin</th>
-                    <th scope="col">Dias de tratamiento</th>
+                    <th class="text-right" scope="col">Dias de tratamiento</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,6 +85,7 @@
             </tbody>
         </table>
     </div>
+    <div class="col-2"></div>
 
 
 

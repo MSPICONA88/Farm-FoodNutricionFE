@@ -27,6 +27,10 @@ import { LineIngresoAnimalesComponent } from './Componentes/Reportes/line-ingres
 import { StackBarAnimalesComponent } from './Componentes/Reportes/stack-bar-animales/stack-bar-animales.component';
 import { PreguntasFrecuentesComponent } from './Componentes/home/preguntas-frecuentes/preguntas-frecuentes.component';
 import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
+import { TerminosYCondicionesComponent } from './Componentes/home/terminos-ycondiciones/terminos-ycondiciones.component';
+import { EgresarLotesComponent } from './Componentes/Lotes/egresar-lotes/egresar-lotes.component';
+import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/quitar-animales.component';
+import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
 
 
 
@@ -42,7 +46,7 @@ import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-pl
 // ];
 
 const routes: Routes = [
-  {path: "", component: MainComponent},
+  {path: "", component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: "crearUsu", component: UserComponent},
@@ -70,9 +74,11 @@ const routes: Routes = [
   {path: "reportLineIngreso", component: LineIngresoAnimalesComponent},
   {path: "reportStackBarAni", component: StackBarAnimalesComponent},
   {path: "reportListAliNecesario", component: ConsultarPlaniComponent},
-  {path: "preguntas", component: PreguntasFrecuentesComponent}
-
-
+  {path: "preguntas", component: PreguntasFrecuentesComponent},
+  {path: "terminos", component: TerminosYCondicionesComponent},
+  {path: "egresarLotes/:idLote", component: EgresarLotesComponent},
+  {path: "quitarAnimales", component: QuitarAnimalesComponent},
+  {path: "listaLotes", component: ListaLotesComponent},
 ];
 
 

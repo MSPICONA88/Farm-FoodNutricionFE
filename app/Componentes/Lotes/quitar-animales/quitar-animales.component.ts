@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { EMPTY, Observable, Subscription, catchError, map } from 'rxjs';
 import { Lote } from 'src/app/Interfaces/Lote';
 import { LoteService } from 'src/app/Services/Lote/lote.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-consultar-lote',
-  templateUrl: './consultar-lote.component.html',
-  styleUrls: ['./consultar-lote.component.css']
+  selector: 'app-quitar-animales',
+  templateUrl: './quitar-animales.component.html',
+  styleUrls: ['./quitar-animales.component.css']
 })
-export class ConsultarLoteComponent {
+export class QuitarAnimalesComponent {
   fechaInicio: string;
   fechaFin: string;
   listaLotes: any = [];
@@ -18,6 +18,10 @@ export class ConsultarLoteComponent {
   selectLote = {} as Lote;
   mostrarModificarLote: boolean = false;
   public page: number;
+  quitarAnimal: boolean = false;
+  idLote: number;
+  cantidadActual: number;
+  lotePorId: any;
 
   constructor(
     private loteService: LoteService,
@@ -69,7 +73,9 @@ export class ConsultarLoteComponent {
         (data) => {
           if (data.ok) {
             this.listaLotes = data.listaLotesDispPorFecha;
+            
             console.log(this.listaLotes)
+            
           }
           else {
             Swal.fire({
@@ -88,6 +94,100 @@ export class ConsultarLoteComponent {
     this.selectLote = lote;
   }
 
+  cargarCantPorLote(id: number): Observable<number> {
+    return this.loteService.lotePorId(id.toString()).pipe(
+      map(respuesta => respuesta.cantidadActual),
+      catchError(() => {
+        Swal.fire({
+          title: 'Error al obtener el lote',
+          icon: 'error',
+          confirmButtonText: "Ok"
+        });
+        return EMPTY;
+      })
+    );
+  }
+  
+
+  quitarAnimales(id: number) {
+    this.cargarCantPorLote(id).subscribe(cantidadActual => {
+      console.log(id);
+      Swal.fire({
+        title: "Ingrese la cantidad de animales a dar de baja",
+        icon: "question",
+        input: "text",
+        inputLabel: "(max: " + (cantidadActual - 1).toString() + ")",
+        inputAttributes: {
+          min: "1",
+          max: (cantidadActual - 1).toString(),
+          step: "1"
+        },
+        inputValue: 1,
+        showCancelButton: true,
+        confirmButtonText: "Siguiente",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const cantidadAnimales = result.value;
+  
+          // Validar que la cantidadAnimales no sea negativa y no supere la cantidadActual
+          if (cantidadAnimales < 0 || cantidadAnimales > cantidadActual - 1) {
+            Swal.fire({
+              title: 'Error',
+              icon: 'error',
+              text: `La cantidad de animales no puede ser negativa ni superar la cantidad máxima permitida (${cantidadActual - 1})`,
+              confirmButtonText: 'Ok',
+            });
+            return;  // Detener la ejecución si la cantidadAnimales es negativa o supera la cantidadActual
+          }
+  
+          // Muestra una segunda confirmación antes de realizar la operación principal
+          Swal.fire({
+            title: 'Confirmar baja de animales',
+            icon: 'question',
+            text: `¿Está seguro de dar de baja ${cantidadAnimales} animales?`,
+            showCancelButton: true,
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar'
+          }).then((confirmationResult) => {
+            if (confirmationResult.isConfirmed) {
+              // Realiza la operación principal si la confirmación es exitosa
+              this.subscription.add(
+                this.loteService.quitarAnimales(id, cantidadAnimales).subscribe({
+                  next: (respuesta) => {
+                    if (respuesta.ok) {
+                      Swal.fire({
+                        title: 'Baja realizada con éxito',
+                        icon: 'success',
+                        confirmButtonText: 'Ok',
+                      }).then(() => {
+                        this.cargarLotes();
+                      });
+                    }
+                  },
+                  error: () => {
+                    Swal.fire({
+                      title: 'Error al dar de baja',
+                      icon: 'error',
+                      confirmButtonText: "Ok"
+                    }).then(() => {
+                      this.cargarLotes();
+                    });
+                  }
+                })
+              );
+            }
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          // El usuario hizo clic en "Cancelar"
+          // Aquí puedes manejar la cancelación, si es necesario
+        }
+      });
+    });
+  }
+  
+  
+  
 
   cancelar() {
     this.selectLote = {} as Lote;
@@ -103,11 +203,11 @@ export class ConsultarLoteComponent {
     const year = fecha.getFullYear();
     const month = fecha.getMonth() + 1;
     const day = fecha.getDate();
-  
+
     // Asegurarse de que month y day tengan dos dígitos
     const monthString = month < 10 ? '0' + month : '' + month;
     const dayString = day < 10 ? '0' + day : '' + day;
-  
+
     return `${year}-${monthString}-${dayString}`;
   }
 
@@ -184,5 +284,7 @@ export class ConsultarLoteComponent {
       }
     });
   }
+
+  
 
 }

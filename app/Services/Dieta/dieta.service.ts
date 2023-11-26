@@ -51,5 +51,15 @@ export class DietaService {
     return this.http.put(url, dieta);
   }
 
+  deleteDieta(idDieta: number): Observable<any> {
+    const url = `${this.apiUrlBase}/delete/${idDieta}`;
+    return this.http.delete(url);
+    
+  }
+
+  verificarUsoDieta(idDieta: number): Observable<boolean> {
+    const url = `${this.apiUrlBase}/verificarUsoDieta/${idDieta}`;
+    return this.http.get<boolean>(url);
+  }
 
 }

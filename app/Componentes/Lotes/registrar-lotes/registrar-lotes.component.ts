@@ -143,7 +143,7 @@ export class RegistrarLotesComponent {
   guardar() {
     if (this.formularioGroup.valid) {
       this.lote.cantidadAnimales = this.formularioGroup.value.cantidad;
-      this.lote.pesoTotal = this.formularioGroup.value.pesoTotal;
+      this.lote.pesoIngreso = this.formularioGroup.value.pesoTotal;
       this.lote.idFinalidad = this.formularioGroup.value.finalidad;
       this.lote.idRaza = this.formularioGroup.value.raza;
       this.lote.edadMeses = this.formularioGroup.value.edadMeses;

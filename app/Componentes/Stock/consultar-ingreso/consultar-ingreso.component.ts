@@ -17,10 +17,20 @@ export class ConsultarStockComponent {
   constructor(
     private stockService: IngresoStockService,
     private router: Router) { }
-    private subscription = new Subscription();
+  private subscription = new Subscription();
 
   ngOnInit(): void {
     //this.cargarLotes();
+  }
+
+
+
+  isArrowDown(tipoMovimiento: string): boolean {
+    return ['Caducidad', 'Deterioro', 'Errores', 'Alimentación'].includes(tipoMovimiento);
+  }
+
+  isArrowUp(tipoMovimiento: string): boolean {
+    return tipoMovimiento === 'Ingreso';
   }
 
 

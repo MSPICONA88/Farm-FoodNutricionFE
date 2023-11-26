@@ -28,9 +28,9 @@
                   <div id="flush-collapseOne" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" href="#" routerLink="crearUsu"><span class="item-text ">Registrar
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" href="#" routerLink="crearUsu"><span class="item-text ">Registrar
                             usuario</span></a></li>
-                      <li><a class="list-group-item dropdown-item" href="#" routerLink="consultarUsu"><span class="item-text ">Consultar
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" href="#" routerLink="consultarUsu"><span class="item-text ">Consultar
                             usuarios</span></a></li>
                     </div>
                   </div>
@@ -50,11 +50,11 @@
                   <div id="flush-collapseTwo" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="alimentos" href="#"><span class="item-text ">Registrar
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="alimentos" href="#"><span class="item-text ">Registrar
                             alimento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarDieta" ref="#"><span class="item-text ">Registrar
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarDieta" ref="#"><span class="item-text ">Registrar
                             dieta</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="consultarDieta" href="#"><span class="item-text ">Consultar
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarDieta" href="#"><span class="item-text ">Consultar
                             dieta</span></a></li>
                     </div>
                   </div>
@@ -75,8 +75,8 @@
                   <div id="flush-collapseThree" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample3">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="planificarAli" href="#"><span class="item-text ">Planificar alimentación</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarAli" href="#"><span class="item-text ">Registrar alimentación</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="planificarAli" href="#"><span class="item-text ">Planificar alimentación</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarAli" href="#"><span class="item-text ">Registrar alimentación</span></a></li>
                     </div>
                   </div>
                 </div>
@@ -96,8 +96,8 @@
                   <div id="flush-collapseFour" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample4">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarTrat" href="#"><span class="item-text ">Registrar tratamiento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="consultarTrat" href="#"><span class="item-text ">Consultar tratamientos</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarTrat" href="#"><span class="item-text ">Registrar tratamiento</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarTrat" href="#"><span class="item-text ">Consultar tratamientos</span></a></li>
                     </div>
                   </div>
                 </div>
@@ -117,9 +117,12 @@
                   <div id="flush-collapseSix" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample6">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarLotes" href="#"><span class="item-text ">Registrar lote</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="consultarLotes" href="#"><span class="item-text ">Consultar lotes</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="modificarLotes" href="#"><span class="item-text ">Modificar lote</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarLotes" href="#"><span class="item-text ">Agregar lote</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="listaLotes" href="#"><span class="item-text ">Consultar lotes</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarLotes" href="#"><span class="item-text ">Actualizar lotes</span></a></li>
+                      <!-- <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="egresarLotes" href="#"><span class="item-text ">Egreso de lotes</span></a></li> -->
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="quitarAnimales" href="#"><span class="item-text ">Quitar animales</span></a></li>
+                      <!-- <li><a class="list-group-item dropdown-item" routerLink="modificarLotes" href="#"><span class="item-text ">Modificar lote</span></a></li> -->
                     </div>
                   </div>
                 </div>
@@ -139,10 +142,10 @@
                   <div id="flush-collapseSeven" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample7">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarStock" href="#"><span class="item-text ">Registrar stock</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="consultarStock" href="#"><span class="item-text ">Consultar stock</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="registrarMov" href="#"><span class="item-text ">Registrar movimiento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="consultarMov" href="#"><span class="item-text ">Consultar movimiento</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarStock" href="#"><span class="item-text ">Registrar stock</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarStock" href="#"><span class="item-text ">Consultar stock</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarMov" href="#"><span class="item-text ">Registrar movimiento</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarMov" href="#"><span class="item-text ">Consultar movimiento</span></a></li>
                     </div>
                   </div>
                 </div>
@@ -162,10 +165,10 @@
                   <div id="flush-collapseEight" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample8">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" routerLink="reportStackBarAni" href="#"><span class="item-text ">Animales disponibles</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="reportCardPeso" href="#"><span class="item-text ">Peso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="reportLineIngreso" href="#"><span class="item-text ">Ingreso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" routerLink="reportListAliNecesario" href="#"><span class="item-text ">Stock necesario</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportStackBarAni" href="#"><span class="item-text ">Animales disponibles</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportCardPeso" href="#"><span class="item-text ">Peso animales</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportLineIngreso" href="#"><span class="item-text ">Ingreso animales</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportListAliNecesario" href="#"><span class="item-text ">Stock necesario</span></a></li>
                     </div>
                   </div>
                 </div>
@@ -177,20 +180,20 @@
               <div class="accordion accordion-flush" id="accordionFlushExample9">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" routerLink="preguntas" type="button" data-bs-toggle="collapse"
+                    <button class="accordion-button collapsed link"  type="button" data-bs-toggle="collapse"
                       data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-                      <i class="bi bi-question-octagon-fill "></i> <span class="text-white">Preguntas frecuentes</span>
+                      <i class="bi bi-question-octagon-fill "></i> <span class="text-white">Acerca de</span>
                     </button>
                   </h2>
-                  <!-- <div id="flush-collapseNine" class="accordion-collapse collapse link"
+                  <div id="flush-collapseNine" class="accordion-collapse collapse link"
                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample9">
                     <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Animales disponibles</span></a></li>
-                      <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Peso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Ingreso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Stock necesario</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="preguntas" href="#"><span class="item-text ">Preguntas frecuentes</span></a></li>
+                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="terminos" href="#"><span class="item-text ">Términos y condiciones</span></a></li>
+                      <!-- <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Ingreso animales</span></a></li>
+                      <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Stock necesario</span></a></li> -->
                     </div>
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -211,25 +214,19 @@
         </div>
       </div>
 
-      <div class="btn-group ">
-        <a href="# " class="dropdown-toggle text-white text-decoration-none " data-bs-toggle="dropdown "
-          aria-expanded="false ">
-          <span class="usericon "><i class="bi bi-person-circle "></i></span>
-          <span class="textnone "></span>
+      <div class="btn-group">
+        <a href="#" class="dropdown-toggle text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="usericon"><i class="bi bi-person-circle"></i></span>
+            <span class="textnone">{{user.usuario1}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end ">
-          <li><button class="dropdown-item " type="button "><i class="bi bi-lock-fill "></i> Cambiar Password</button>
-          </li>
-          <li><button class="dropdown-item " type="button "><i class="bi bi-gear-fill "></i> Administrar
-              usuario</button></li>
-          <li><button class="dropdown-item " type="button "><i class="bi bi-gear-wide-connected "></i>
-              Configuración</button></li>
-          <li>
-            <hr class="dropdown-divider ">
-          </li>
-          <li><button class="dropdown-item " type="button "><i class="bi bi-box-arrow-right "></i> Salir</button></li>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <!-- <li><button class="dropdown-item" type="button"><i class="bi bi-lock-fill"></i> Change Password</button></li>
+            <li><button class="dropdown-item" type="button"><i class="bi bi-gear-fill"></i> Admin Setion</button></li> -->
+            <li class="dropdown-item" type="label"><i class="bi bi-gear-wide-connected"></i> Rol: {{user.rol}}</li>
+            <li><hr class="dropdown-divider"></li>
+            <li (click)="logOut()"><button class="dropdown-item" type="button"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button></li>
         </ul>
-      </div>
+    </div>
 
     </div>
   </nav>
