@@ -32,10 +32,10 @@
                     <th scope="col">Raza</th>
                     <th scope="col">Finalidad</th>
                     <th scope="col">Edad en meses</th>
-                    <th scope="col">Cantidad inicial</th>
+                    <th scope="col">Cant inicial</th>
                     <th scope="col">Peso ingreso</th>
-                    <th scope="col">Cantidad actual</th>
-                    <th scope="col">Cantidad bajas</th>
+                    <th scope="col">Cant actual</th>
+                    <th scope="col">Cant bajas</th>
                     <th scope="col">Fecha egreso</th>
                     <th scope="col">Peso egreso</th>
                     <!-- <th scope="col">Acción</th> -->
@@ -53,8 +53,8 @@
                     <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td>
                     <td class="text-right">{{ lote.cantidadActual| customNumber }}</td>
                     <td class="text-right">{{ lote.cantidadBajas| customNumber }}</td>
-                    <td>{{ formatFechaIngreso(lote.fechaEgreso)}}</td>
-                    <td class="text-right">{{ lote.pesoEgreso }}</td>
+                    <td>{{ lote.fechaEgreso | date:'dd-MM-yyyy'}}</td>
+                    <td class="text-right">{{ lote.pesoEgreso | customNumber}}</td>
                     <!-- <td>
                         <button class="btn btn-primary">
                             <i class="bi bi-pencil-fill" [routerLink]="['/modificarlote', lote.idLote] " (click)="mostrarComponente()"></i>

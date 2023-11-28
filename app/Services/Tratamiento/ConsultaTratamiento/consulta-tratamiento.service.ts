@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ConsultaTratamientoService {
 
   apiUrlBase: string = environment.baseUrl + "/api/tratamientos/getPorFechas";
-  
+  apiUrlBase2: string = environment.baseUrl + "/api/tratamientos";
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -29,4 +29,7 @@ export class ConsultaTratamientoService {
     return this.http.post(this.apiUrlBase, body, { 'headers': headers })
   }
 
+  getAllTratamientos(): Observable<any> {
+    return this.http.get<any>(this.apiUrlBase2 + '/getTratamientos');
+  }
 }

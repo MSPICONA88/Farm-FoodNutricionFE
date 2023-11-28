@@ -81,6 +81,7 @@ export class ConsultarDietaComponent {
                 text: "La dieta " + data.idDieta + " ha sido eliminada",
                 icon: "success"
               });
+              this.getDietasConAlimentos();
             }
             else {
               swalWithBootstrapButtons.fire({

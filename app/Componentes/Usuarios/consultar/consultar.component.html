@@ -29,7 +29,7 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let user of users | filter: filterUsuarios">
+          <tr *ngFor="let user of users | filter: filterUsuarios |  paginate: { itemsPerPage: 5, currentPage: page }">
 
 
             <td>{{ user.nombreApellido }}</td>
@@ -48,5 +48,6 @@
     </div>
     <div class="col-2"></div>
   </div>
-
+  <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"></pagination-controls>
 </div>

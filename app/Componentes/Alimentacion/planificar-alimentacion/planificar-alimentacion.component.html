@@ -28,12 +28,12 @@
             <thead class="encabezado">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Fecha Ingreso</th>
+                    <th scope="col">Fecha ingreso</th>
                     <th scope="col">Finalidad</th>
                     <th scope="col">Especie</th>
                     <th scope="col">Raza</th>
                     <th scope="col">Edad en meses</th>
-                    <th scope="col">Cantidad de Animales</th>
+                    <th scope="col">Cantidad de animales</th>
                     <!-- <th scope="col">Peso inicial</th> -->
                     <th scope="col">Planificar</th>
                 </tr>
@@ -64,40 +64,61 @@
     <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
         screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>
 </div>
-
+<br>
 <div *ngIf="asigDieta" class="tag" [formGroup]="formularioGroup">
     <div class="form-group">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Dieta</th>
-                    <th>Fecha Desde</th>
-                    <th>Fecha Hasta</th>
-                    <th>Toneladas diarias</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <select class="form-control" formControlName="idDieta">
-                            <option [ngValue]="dieta.idDieta" *ngFor="let dieta of dietas">{{ dieta.nombreDieta }}
-                            </option>
+        <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Id lote</th>
+                                <th>Dieta</th>
+                                <th>Fecha desde</th>
+                                <th>Fecha hasta</th>
+                                <th>Toneladas diarias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label class="form-control">{{idLote}}</label>
+                                </td>
+                                <td>
+                                    <select class="form-control" formControlName="idDieta">
+                                        <option [ngValue]="dieta.idDieta" *ngFor="let dieta of dietas">{{
+                                            dieta.nombreDieta
+                                            }}
+                                        </option>
 
-                        </select>
-                    </td>
-                    <td>
-                        <input type="date" class="form-control" formControlName="fechaInicio">
-                    </td>
-                    <td>
-                        <input type="date" class="form-control" formControlName="fechaFin">
-                    </td>
-                    <td>
-                        <input type="number" class="form-control" formControlName="cantToneladaDiaria">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control" formControlName="fechaInicio">
+                                </td>
+                                <td>
+                                    <input type="date" class="form-control" formControlName="fechaFin">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" formControlName="cantToneladaDiaria">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button style="margin-right: 6px;" type="submit" class="btn btn-primary" (click)="guardarPlani()">Guardar</button>
+                    <button type="cancel" class="btn btn-secondary" (click)="cancelarPlani()">Cancelar</button>
+                </div>
+                <div class="col-1"></div>
+
+            </div>
+            
+        </div>
+        
+
+        <br>
+
     </div>
-    <br>
-    <button type="submit" class="btn btn-primary" (click)="guardarPlani()">Guardar</button>
 </div>

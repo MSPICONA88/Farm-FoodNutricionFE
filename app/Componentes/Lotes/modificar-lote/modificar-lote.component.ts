@@ -46,7 +46,7 @@ export class ModificarLoteComponent {
       idLote: [],
       fechaIngreso: ['', [Validators.required]],
       cantidadAnimales: ['', [Validators.required]],
-      pesoTotal: ['', [Validators.required]],
+      pesoIngreso: ['', [Validators.required]],
       idFinalidad: ['', [Validators.required]],
       idEspecie: ['', [Validators.required]],
       idRaza: ['', [Validators.required]],
@@ -160,7 +160,7 @@ export class ModificarLoteComponent {
     if (this.formularioGroup.valid) {
       this.lote.fechaIngreso= this.formularioGroup.value.fechaIngreso;
       this.lote.cantidadAnimales = this.formularioGroup.value.cantidadAnimales;
-      this.lote.pesoIngreso = this.formularioGroup.value.pesoTotal;
+      this.lote.pesoIngreso = this.formularioGroup.value.pesoIngreso;
       this.lote.idFinalidad = this.formularioGroup.value.idFinalidad;
       this.lote.idRaza = this.formularioGroup.value.idRaza;
       this.lote.edadMeses = this.formularioGroup.value.edadMeses;
@@ -228,7 +228,7 @@ export class ModificarLoteComponent {
     return this.formularioGroup.controls['cantidadAnimales'] as FormControl
   }
   get controlPeso(): FormControl {
-    return this.formularioGroup.controls['pesoTotal'] as FormControl
+    return this.formularioGroup.controls['pesoIngreso'] as FormControl
   }
   get controlFinalidad(): FormControl {
     return this.formularioGroup.controls['idFinalidad'] as FormControl

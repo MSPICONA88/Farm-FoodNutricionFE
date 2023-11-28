@@ -26,7 +26,7 @@ export class ListaLotesComponent {
   }
   private subscription = new Subscription();
   ngOnInit(): void {
-    //this.cargarLotesDef();
+    this.cargarLotesDef();
   }
 
 

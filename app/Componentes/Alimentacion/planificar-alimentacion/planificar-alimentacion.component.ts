@@ -50,7 +50,11 @@ export class PlanificarAlimentacionComponent {
    
   }
 
+  cancelarPlani(){
+    this.asigDieta=false;
+    this.limpiarForm();
 
+  }
   cargarLotes() {
     this.subscription.add(
       this.loteService.lotePorFecha(this.fechaInicio, this.fechaFin).subscribe(
@@ -128,6 +132,7 @@ export class PlanificarAlimentacionComponent {
             confirmButtonText: 'Ok',
           }).then(() => {
             this.limpiarForm();
+            this.asigDieta=false;
           });
         } else {
           alert('No se pudo crear la dieta');

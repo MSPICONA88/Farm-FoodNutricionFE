@@ -94,4 +94,11 @@ export class LoteService {
     const url = this.apiUrlBase + '/bajaAnimales';
     return this.http.put<any>(url+'/'+idLote+'/'+cantidadAnimalesADarDeBaja, { 'headers': headers });
   }
+
+  egresarLote(idLote: number, lote: ComandoLote): Observable<any>{
+    const body = JSON.stringify(lote);
+    const headers = { 'content-type': 'application/json' };
+    const url = this.apiUrlBase + '/egresarLote';
+    return this.http.put<any>(url+'/'+idLote, body, { 'headers': headers });
+  }
 }

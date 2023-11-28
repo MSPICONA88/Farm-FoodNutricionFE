@@ -26,7 +26,30 @@ export class ConsultarTratComponent {
     this.cargarTratamientos();
   }
 
-  cargarTratamientos() {
+  cargarTratamientos(){
+    this.subscription.add(
+      this.tratService.getAllTratamientos().subscribe(
+        (data) => {
+          if (data.ok) {
+            this.listaTratamientos = data.listaTratatamientos;
+            console.log(this.listaTratamientos.especie)
+          }
+          else {
+            Swal.fire({
+              title: data.error,
+              icon: 'warning',
+              confirmButtonText: "Ok"
+            });
+          }
+        }
+      )
+    );
+  }
+
+
+
+
+  cargarTratamientosPorFecha() {
     this.buscador=true;
     this.subscription.add(
       this.tratService.tratPorFecha(this.fechaInicio, this.fechaFin).subscribe(

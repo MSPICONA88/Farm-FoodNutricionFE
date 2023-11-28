@@ -17,7 +17,7 @@ export class ConsultarComponent {
   users: any[];
   filterUsuarios: string = '';
   private subscription = new Subscription();
-
+  page:number;
 
 
   constructor(

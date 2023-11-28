@@ -12,13 +12,15 @@ import Swal from 'sweetalert2';
 })
 export class CardPesoListComponent {
   cantTotalAnimales: number;
-  pesoTotalAnimales: number;
+  pesoTotalIngreso: number;
   pesoPromAnimal: number;
   reporteCard: any;
   formularioGroup: FormGroup;
   listaEspecies: any = [];
   idEspecie: number;
   listaLotes: any = [];
+  
+  pesoActualAprox: number;
   
   private subscription = new Subscription();
 
@@ -78,7 +80,8 @@ export class CardPesoListComponent {
         (data) => {
           if (data!=null) {
             this.listaLotes = data.listaLotesPorEspecie;
-            console.log(this.listaLotes)
+            // this.pesoActualAprox= (this.listaLotes.pesoPromAnimal*this.listaLotes.cantidadActual)
+            // console.log(this.listaLotes)
           }
           else {
             Swal.fire({
@@ -95,11 +98,10 @@ export class CardPesoListComponent {
   cargarCardsUpdate(idEspecie: number){
     this.especieService.reportEspecieId(idEspecie).subscribe({
       next: (respuesta) => {
-        this.cantTotalAnimales = respuesta.cantidadAnimales;
-        this.pesoTotalAnimales = respuesta.pesoTotal;
-        this.pesoPromAnimal=respuesta.pesoPromedio;
-        // this.listaEspecies = respuesta.listaEspecies; //anterior
-        // console.log(respuesta.listaEspecies); // Agregado para verificar
+        this.cantTotalAnimales = respuesta.cantidadActual;
+        this.pesoTotalIngreso = respuesta.pesoIngreso;
+        this.pesoPromAnimal=respuesta.pesoPromedio ;
+        this.pesoActualAprox= respuesta.pesoActualAprox;
       },
       error: () => {
         alert('error al comunicarse con la API EspeciesReportes');
@@ -110,9 +112,10 @@ export class CardPesoListComponent {
   cargarCardsInit(){
     this.especieService.reportEspecieAll().subscribe({
       next: (respuesta) => {
-        this.cantTotalAnimales = respuesta.cantidadAnimales;
-        this.pesoTotalAnimales = respuesta.pesoTotal;
+        this.cantTotalAnimales = respuesta.cantidadActual; 
+        this.pesoTotalIngreso = respuesta.pesoIngreso;
         this.pesoPromAnimal=respuesta.pesoPromedio;
+        this.pesoActualAprox= respuesta.pesoActualAprox;
         // this.listaEspecies = respuesta.listaEspecies; //anterior
         // console.log(respuesta.listaEspecies); // Agregado para verificar
       },

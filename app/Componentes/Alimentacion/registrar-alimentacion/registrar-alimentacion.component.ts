@@ -15,17 +15,20 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarAlimentacionComponent {
   fechaActual: string;
+  fechanro: Date;
   listaPlanes: PlanesAli[];
   subscription = new Subscription();
   idPlanSel: number;
   asigIdPlan: boolean = false;
   formularioGroup: FormGroup;
+  page: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private planesServ: AlimentacionService,
     private http: HttpClient
   ) {
+    
     this.fechaActual = new Date().toString();
     this.getPlanesAli();
     this.formularioGroup = this.formBuilder.group({
@@ -106,7 +109,7 @@ export class RegistrarAlimentacionComponent {
     const dateObject = new Date(fechaIngreso);
 
     // Obtener los componentes de la fecha
-    const day = dateObject.getDate();
+    const day = dateObject.getDate()+1;
     const month = dateObject.getMonth() + 1; // Los meses comienzan desde 0
     const year = dateObject.getFullYear();
 

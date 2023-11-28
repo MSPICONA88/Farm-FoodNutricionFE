@@ -39,8 +39,8 @@ export class LineIngresoAnimalesComponent {
 
 
   renderLineChart() {
-    const colors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'];
-
+    //const colors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'];
+    const colors = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', 'rgba(75, 192, 192, 0.7)'];
     const canvas = document.getElementById('lineChart') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
 
@@ -65,7 +65,7 @@ export class LineIngresoAnimalesComponent {
           data: dataset.data,
           backgroundColor: colors[index],
           borderColor: colors[index],
-          borderWidth: 1
+          borderWidth: 3
         }))
       },
       options: {
@@ -101,7 +101,7 @@ export class LineIngresoAnimalesComponent {
         this.datasets = especies.map(especie => {
           const data = meses.map(mes => {
             const item = this.chartData.find((entry: { especie: unknown; mes: unknown; }) => entry.especie === especie && entry.mes === mes);
-            return item ? item.cantidadAnimales : 0;
+            return item ? item.cantidadInicial : 0;
           });
           return { label: especie, data: data };
         });
@@ -117,7 +117,7 @@ export class LineIngresoAnimalesComponent {
         this.onFechaInicioChange();
       }
     });
-  
+
     this.formularioGroup.get('fechaFin')?.valueChanges.subscribe((fechaFin: string) => {
       if (fechaFin) {
         this.onFechaFinChange();
@@ -139,7 +139,7 @@ export class LineIngresoAnimalesComponent {
         this.datasets = especies.map(especie => {
           const data = meses.map(mes => {
             const item = this.chartData.find((entry: { especie: unknown; mes: unknown; }) => entry.especie === especie && entry.mes === mes);
-            return item ? item.cantidadAnimales : 0;
+            return item ? item.cantidadActual : 0;
           });
           return { label: especie, data: data };
         });

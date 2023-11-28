@@ -11,6 +11,7 @@ import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import { Chart, registerables } from 'chart.js';
 import { AnimalExistence } from 'src/app/Interfaces/animalExistence';
 import { ResultStock } from 'src/app/Interfaces/resultStock';
+import { AnimalData } from 'src/app/Interfaces/animalData';
 Chart.register(...registerables);
 
 
@@ -34,13 +35,14 @@ export class StackBarAnimalesComponent {
   //datos: ChartData<'bar'>
   // datos: ChartDataset[] = [];
   datos: ChartData<'bar'>
+  datosAnimales: AnimalData[];
 
   chartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     aspectRatio: 2,
     scales: { x: { stacked: true }, y: { stacked: true } },
-    
+
     // Otras configuraciones del gráfico
   };
 
@@ -52,7 +54,7 @@ export class StackBarAnimalesComponent {
   realData2: any[] = [];
   cantData2: any[] = [];
   chartData2: any;
-
+  razasPorEspecie: any[] = [];
   private subscription = new Subscription();
 
   constructor(
@@ -76,12 +78,77 @@ export class StackBarAnimalesComponent {
     this.getRazasPorEspecie();
     this.getIdRaza();
     // this.renderChart(labelData: any, maindata: any, cantData: any);
-    this.renderChart2();
+    //this.renderChart2();
     // if(this.formularioGroup?.get('especie')?.valueChanges || this.formularioGroup?.get('raza')?.valueChanges){
     //   this.changeFormControls();
     // }
 
+    this.animalService.getAllAnimales().subscribe((datos: AnimalData[]) => {
+      this.datosAnimales = datos;
+      this.crearGrafico();
+    });
 
+  }
+
+
+  crearGrafico() {
+    const especiesUnicas = Array.from(
+      new Set(this.datosAnimales.map((animal) => animal.especie))
+    );
+    const colores = this.generarColores(especiesUnicas.length);
+  
+    const datasetsPorEspecie = especiesUnicas.map((especie, especieIndex) => {
+      const datosPorEspecie = this.datosAnimales
+        .filter((animal) => animal.especie === especie)
+        .map((animal, razaIndex) => ({
+          label: animal.raza,
+          data: [animal.sum],
+          backgroundColor: colores[razaIndex], // Usa el índice de raza para obtener el color
+          borderColor: colores[razaIndex],
+          borderWidth: 1,
+        }));
+  
+      return datosPorEspecie;
+    });
+  
+    const razasUnicas = Array.from(
+      new Set(this.datosAnimales.map((animal) => animal.raza))
+    );
+  
+    const datasets = razasUnicas.map((raza, razaIndex) => {
+      return {
+        label: raza,
+        data: datasetsPorEspecie
+          .map((datosPorEspecie) =>
+            datosPorEspecie.find((datos) => datos.label === raza)?.data[0] || 0
+          ),
+        backgroundColor: colores[razaIndex],
+        borderColor: colores[razaIndex],
+        borderWidth: 1,
+      };
+    });
+  
+    const ctx = document.getElementById('stackedBar') as HTMLCanvasElement;
+    const miGrafico = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: especiesUnicas,
+        datasets: datasets,
+      },
+      options: {
+        scales: {
+          x: { stacked: true },
+          y: { stacked: true },
+        },
+      },
+    });
+  }
+
+  generarColores(cantidad: number): string[] {
+    // Lógica para generar colores aleatorios o utiliza una biblioteca específica
+    // Por ejemplo, puedes usar una función que devuelva colores hexadecimales aleatorios.
+    // Aquí hay un ejemplo simple:
+    return Array.from({ length: cantidad }, () => '#' + Math.floor(Math.random() * 16777215).toString(16));
   }
 
   //funciona ok
@@ -112,21 +179,21 @@ export class StackBarAnimalesComponent {
 
   renderChart(labelData: any, realData: any, cantData: any) {
     const colors = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'];
-  
+
     const canvas = document.getElementById('stackedBar') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
-  
+
     if (!ctx) {
       console.error('Error: No se pudo obtener el contexto del lienzo.');
       return;
     }
-  
+
     // Verificar si ya existe un gráfico en el lienzo y destruirlo
     const existingChart = Chart.getChart('stackedBar');
     if (existingChart) {
       existingChart.destroy();
     }
-  
+
     // Crear el nuevo gráfico
     new Chart(ctx, {
       type: 'bar',
@@ -156,9 +223,9 @@ export class StackBarAnimalesComponent {
       // }
     });
   }
-  
-  
-  
+
+
+
   //funciona ok
   renderChart2() {
     this.animalService.getAllAnimales().subscribe(result => {
@@ -204,7 +271,7 @@ export class StackBarAnimalesComponent {
       if (x) { // Verificar si el valor de especie es válido
         this.idEspecie = x,
           console.log(this.idEspecie)
-          this.changeFormControls();
+        this.changeFormControls();
         this.subscription.add(
           this.razaService.getRazasPorEspecie(x).subscribe({
             next: (respuesta) => {
@@ -236,21 +303,21 @@ export class StackBarAnimalesComponent {
   changeFormControls() {
     console.log(this.idEspecie);
     console.log(this.idRaza);
-  
+
     this.animalService.getAnimalesDisponibles(this.idEspecie, this.idRaza).subscribe(
       (resultado: AnimalExistence[]) => {
         this.chartData2 = resultado;
-  
+
         if (this.chartData2 != null) {
           const especiesMap2 = new Map<string, number>(); // Mapa para almacenar la especie y la suma acumulada
-  
+
           this.labelData2 = []; // Reiniciar el arreglo de etiquetas antes de agregar nuevos valores
           this.cantData2 = []; // Reiniciar el arreglo de cantidades antes de agregar nuevos valores
-  
+
           for (let i = 0; i < this.chartData2.length; i++) {
             const especie2 = this.chartData2[i].especie;
             const sum2 = this.chartData2[i].sum;
-  
+
             if (especiesMap2.has(especie2)) {
               const acumulado2 = especiesMap2.get(especie2);
               especiesMap2.set(especie2, acumulado2 + sum2);
@@ -258,12 +325,12 @@ export class StackBarAnimalesComponent {
               especiesMap2.set(especie2, sum2);
             }
           }
-  
+
           especiesMap2.forEach((sum2, especie2) => {
             this.labelData2.push(especie2);
             this.cantData2.push(sum2);
           });
-  
+
           this.renderChart(this.labelData2, this.realData2, this.cantData2);
         }
       },
@@ -272,8 +339,8 @@ export class StackBarAnimalesComponent {
       }
     );
   }
-  
-  
+
+
 
 
 
