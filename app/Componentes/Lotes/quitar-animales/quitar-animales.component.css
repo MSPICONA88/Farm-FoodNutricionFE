@@ -1,3 +1,7 @@
 .encabezado{
     background-color: #68d6b6 ;
   }
+
+  .text-right {
+    text-align: right;
+  }

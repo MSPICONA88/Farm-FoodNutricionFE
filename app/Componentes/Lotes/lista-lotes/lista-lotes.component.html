@@ -25,7 +25,7 @@
     <div class="">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
-                <tr>
+                <tr class="text-muted text-center border-bottom border-success">
                     <th scope="col">#</th>
                     <th scope="col">Fecha ingreso</th>
                     <th scope="col">Especie</th>
@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                <tr class=" text-center border-bottom border-success" *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
                     <th scope="row">{{lote.idLote}}</th>
                     <td>{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
                     <td>{{ lote.especie }}</td>

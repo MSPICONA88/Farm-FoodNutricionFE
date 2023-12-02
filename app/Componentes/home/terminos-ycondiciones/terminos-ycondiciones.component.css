@@ -1,0 +1,51 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+
+  .h3 {
+    max-width: 1500px;
+    margin-left: 200px;
+  }
+  
+  /* h1, h2, h3 {
+    color: #007bff;
+  } */
+  
+ 
+
+  h2, h3 {
+    
+    cursor: pointer;
+  }
+  
+  p {
+    margin-bottom: 15px;
+  }
+  
+  .collapse.show {
+    display: block;
+  }
+  
+  .collapse {
+    display: none;
+  }
+  
+  .collapse:not(.show) {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+  
+  .collapse.show {
+    height: auto;
+  }
+  

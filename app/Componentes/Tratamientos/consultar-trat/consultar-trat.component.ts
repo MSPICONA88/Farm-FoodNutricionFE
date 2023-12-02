@@ -16,7 +16,7 @@ export class ConsultarTratComponent {
   listaTratamientos: any=[];
   buscador: boolean=false;
   filtroTrat: string = '' ;
-  
+  page: number;
 
   constructor(
     private tratService: ConsultaTratamientoService,

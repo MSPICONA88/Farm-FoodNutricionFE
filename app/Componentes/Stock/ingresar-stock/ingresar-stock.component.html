@@ -6,11 +6,12 @@
         <div class="col-sm-3"></div> <!-- Espacio de margen izquierdo -->
 
         <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
-            <div class="border p-4 rounded mx-auto">
+            <div class="border p-4 rounded mx-auto border-dark">
                 <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
                     <div class="container">
                         <div class="mb-3 row">
-                            <label for="idAlimento" class="form-label col-sm-4 text-right col-form-label">Alimento</label>
+                            <label for="idAlimento"
+                                class="form-label col-sm-4 text-right col-form-label">Alimento</label>
                             <div class="col-sm-7">
                                 <select class="form-select" id="idAlimento" formControlName="idAlimento">
                                     <option *ngFor="let ali of listaAlimentos" [value]="ali.idAlimento">
@@ -21,7 +22,8 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="fechaRegistro" class="form-label col-sm-4 text-right col-form-label">Fecha de registro</label>
+                            <label for="fechaRegistro" class="form-label col-sm-4 text-right col-form-label">Fecha de
+                                registro</label>
                             <div class="col-sm-7">
                                 <input type="date" class="form-control" formControlName="fechaRegistro"
                                     id="fechaRegistro">
@@ -29,17 +31,26 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="toneladas" class="form-label col-sm-4 text-right col-form-label">Toneladas</label>
+                            <label for="toneladas"
+                                class="form-label col-sm-4 text-right col-form-label">Toneladas</label>
                             <div class="col-sm-7">
                                 <input type="number" class="form-control" formControlName="toneladas" id="toneladas">
                             </div>
 
                         </div>
                         <div class="mb-3 row">
-                            <label for="precioTonelada" class="form-label col-sm-4 text-right col-form-label">Precio tonelada</label>
-                            <div class="col-sm-7">
-                                <input type="number" class="form-control" formControlName="precioTonelada"
+                            <label for="precioTonelada" class="form-label col-sm-4 text-right col-form-label">Precio
+                                tonelada</label>
+                            <!-- <div class="col-sm-7">
+                                <input type="number" placeholder="$" class="form-control" formControlName="precioTonelada"
                                     id="precioTonelada">
+                            </div> -->
+                            <div class="col-sm-7">
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">$</span>
+                                    <input type="number" class="form-control" formControlName="precioTonelada"
+                                    id="precioTonelada">
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,7 @@ export class ConsultarStockComponent {
   fechaInicio: string;
   fechaFin: string;
   listaStockPorFechas: any = [];
+  page: number;
 
   constructor(
     private stockService: IngresoStockService,

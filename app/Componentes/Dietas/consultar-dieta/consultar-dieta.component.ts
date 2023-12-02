@@ -145,6 +145,9 @@ export class ConsultarDietaComponent {
     });
   }
 
+  crearDieta(){
+    this.router.navigate(['registrarDieta']);
+  }
 
 
 }

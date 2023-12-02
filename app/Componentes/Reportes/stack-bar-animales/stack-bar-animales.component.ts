@@ -103,8 +103,8 @@ export class StackBarAnimalesComponent {
         .map((animal, razaIndex) => ({
           label: animal.raza,
           data: [animal.sum],
-          backgroundColor: colores[razaIndex], // Usa el índice de raza para obtener el color
-          borderColor: colores[razaIndex],
+          backgroundColor: colores[1], // Usa el índice de raza para obtener el color
+          borderColor: colores[2],
           borderWidth: 1,
         }));
   
@@ -122,8 +122,8 @@ export class StackBarAnimalesComponent {
           .map((datosPorEspecie) =>
             datosPorEspecie.find((datos) => datos.label === raza)?.data[0] || 0
           ),
-        backgroundColor: colores[razaIndex],
-        borderColor: colores[razaIndex],
+        backgroundColor: colores[3],
+        borderColor: colores[4],
         borderWidth: 1,
       };
     });
@@ -137,8 +137,23 @@ export class StackBarAnimalesComponent {
       },
       options: {
         scales: {
-          x: { stacked: true },
-          y: { stacked: true },
+          y: {
+            stacked:true,
+            beginAtZero: true,
+            title: {
+              display: true,
+              color: 'black',
+              text: 'Cantidad animales',
+            },
+          },
+          x: {
+            stacked:true,
+            title: {
+              display: true,
+              color: 'black',
+              text: 'Especie',
+            },
+          },
         },
       },
     });

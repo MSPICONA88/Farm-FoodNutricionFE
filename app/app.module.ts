@@ -46,6 +46,8 @@ import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/qui
 import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
 
 
+
+
 // Registra la configuración regional para "es-ES"
 registerLocaleData(localeEs);
 
@@ -98,7 +100,9 @@ registerLocaleData(localeEs);
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
+    
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-ES' }],
   bootstrap: [AppComponent]

@@ -1,3 +1,10 @@
-.encabezado{
-    background-color: #68d6b6 ;
-  }
+.encabezado {
+  background-color: #68d6b6;
+}
+
+.background-container {
+  background-color: #dbe2db;
+  /* Usa el mismo color del contenedor */
+  padding: 10px;
+  /* Ajusta el relleno según tus necesidades */
+}

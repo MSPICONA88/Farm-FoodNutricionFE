@@ -18,78 +18,39 @@
 <br>
 <div class="container">
     <!-- <div class="card-group"> -->
-        <div class="row align-middle" style="align-items: center;">
-            
-            <div class="col-3">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header text-center">CANTIDAD ACTUAL DE ANIMALES</div>
-                    <div class="card-body p-3 text-center">
-                        
-                        <p class="card-text">{{cantTotalAnimales | customNumber}}</p>
-                    </div>
+    <div class="row align-middle" style="align-items: end; padding-left: 80;">
+
+        <div class="col-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">CANTIDAD ACTUAL DE ANIMALES</div>
+                <div class="card-body p-3 text-center">
+
+                    <p class="card-text">{{cantTotalAnimales | customNumber}}</p>
                 </div>
             </div>
-            <div class="col-1"></div>
-            <div class="col-3">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header text-center">PESO TOTAL APROX</div>
-                    <div class="card-body p-3 text-center">
-                        
-                        <p class="card-text">{{pesoActualAprox| customNumber }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-1"></div>
-            <div class="col-3">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header text-center">PESO PROMEDIO POR ANIMAL</div>
-                    <div class="card-body p-3 text-center">
-                        <p class="card-text">{{pesoPromAnimal | customNumber}}</p>
-                    </div>
-                </div>
-            </div>
-            
         </div>
-    
-</div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">PESO TOTAL APROX</div>
+                <div class="card-body p-3 text-center">
 
+                    <p class="card-text">{{pesoActualAprox| customNumber }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header text-center">PESO PROMEDIO POR ANIMAL</div>
+                <div class="card-body p-3 text-center">
+                    <p class="card-text">{{pesoPromAnimal | customNumber}}</p>
+                </div>
+            </div>
+        </div>
 
-<br>
-<h3>Listado de Lotes</h3>
-<br>
-
-<div class="row">
-    <div class="">
-        <table id="listado" class="table table-hover text-center">
-            <thead class="encabezado">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fecha ingreso</th>
-                    <th scope="col">Finalidad</th>
-                    <th scope="col">Especie</th>
-                    <th scope="col">Raza</th>
-                    <th scope="col">Edad en meses</th>
-                    <th scope="col">Cantidad de animales</th>
-                    <th scope="col">Peso total</th>
-                    <th scope="col">Peso promedio por Animal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let lote of listaLotes">
-                    <th scope="row">{{lote.idLote}}</th>
-                    <td>{{ lote.fechaIngreso | date:'dd-MM-yyyy' }}</td>
-                    <td>{{ lote.finalidad }}</td>
-                    <td>{{ lote.especie }}</td>
-                    <td>{{ lote.raza }}</td>
-                    <td>{{ lote.edadMeses }}</td>
-                    <td class="text-right">{{ lote.cantidadActual | customNumber}}</td>
-                    <td class="text-right">{{ lote.pesoAproxActual | customNumber }}</td>
-                    <td class="text-right">{{ lote.pesoPromedioPorAnimalIngreso | customNumber}}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
-
-
 </div>
+<pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
+    screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>

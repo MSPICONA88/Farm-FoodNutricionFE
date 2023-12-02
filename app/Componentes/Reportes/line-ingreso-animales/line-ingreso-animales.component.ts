@@ -71,9 +71,21 @@ export class LineIngresoAnimalesComponent {
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
+            beginAtZero: true,
+            title: {
+              display: true,
+              color: 'black',
+              text: 'Cantidad animales',
+            },
+          },
+          x: {
+            title: {
+              display: true,
+              color: 'black',
+              text: 'Período',
+            },
+          },
+        },
       }
     });
   }

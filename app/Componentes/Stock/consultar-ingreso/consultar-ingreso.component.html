@@ -23,35 +23,40 @@
     <div class="col-10">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
-                <tr>
+                <tr class="text-muted text-center border-bottom border-success">
                     <th scope="col">#</th>
+                    <th scope="col">Tipo de movimiento</th>
                     <th scope="col">Alimento</th>
                     <th scope="col">Fecha de registro</th>
                     <th scope="col">Toneladas</th>
                     <th scope="col">Precio de tonelada</th>
-                    <th scope="col">Tipo de movimiento</th>
-                    
+
+
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let stock of listaStockPorFechas">
+                <tr class=" text-center border-bottom border-success" *ngFor="let stock of listaStockPorFechas |  paginate: { itemsPerPage: 5, currentPage: page }">
                     <!-- <th scope="row">{{stock.idLote}}</th> -->
                     <td scope="row">
                         {{stock.idLote}}
-                        <i [ngStyle]="{'color': isArrowDown(stock.tipoMovimiento) ? 'red' : 'green'}" class="bi" [ngClass]="{'bi-arrow-down-circle-fill': isArrowDown(stock.tipoMovimiento), 'bi-arrow-up-circle-fill': isArrowUp(stock.tipoMovimiento)}"></i>
-                      </td>
+                        <i [ngStyle]="{'color': isArrowDown(stock.tipoMovimiento) ? 'red' : 'green'}" class="bi"
+                            [ngClass]="{'bi-arrow-down-circle-fill': isArrowDown(stock.tipoMovimiento), 'bi-arrow-up-circle-fill': isArrowUp(stock.tipoMovimiento)}"></i>
+                    </td>
+                    <td>{{ stock.tipoMovimiento }}</td>
                     <td>{{ stock.alimento }}</td>
                     <td>{{ formatFechaIngreso(stock.fechaRegistro) }}</td>
                     <td class="text-right">{{ stock.toneladas | customNumber }}</td>
-                    <td class="text-right">${{ stock.precioTonelada | customNumber  }}</td>
-                    <td>{{ stock.tipoMovimiento }}</td>
-                    
+                    <td class="text-right">${{ stock.precioTonelada | customNumber }}</td>
+
+
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="col-1"></div>
-    
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
+        screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>
+
 
 
 </div>

@@ -5,6 +5,7 @@ import { EspecieService } from 'src/app/Services/Lote/Especie/especie.service';
 import { LoteService } from 'src/app/Services/Lote/lote.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-card-peso-list',
   templateUrl: './card-peso-list.component.html',
@@ -19,6 +20,7 @@ export class CardPesoListComponent {
   listaEspecies: any = [];
   idEspecie: number;
   listaLotes: any = [];
+  page: number;
   
   pesoActualAprox: number;
   
@@ -33,7 +35,7 @@ export class CardPesoListComponent {
   }
 
   ngOnInit(): void {
-
+    
     //this.cargarListadoRaza();
     this.formularioGroup = this.formBuilder.group({
       especie: ['', [Validators.required]],
@@ -144,6 +146,18 @@ export class CardPesoListComponent {
   get controlEspecie(): FormControl {
     return this.formularioGroup.controls['especie'] as FormControl
   }
+
+
+  // createPdf(){
+
+  //   const pdfDefinition: any{
+  //     content: [
+  //       {
+  //         text:''
+  //       }
+  //     ]
+  //   }
+  // }
 }
 
 

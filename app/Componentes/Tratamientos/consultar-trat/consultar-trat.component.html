@@ -7,7 +7,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <h3 class="text-center">Búsqueda por fechas</h3>
-            <div class="border p-4 rounded mx-auto">
+            <div class="border p-4 rounded mx-auto border-dark">
                 <div class="container ">
                     <div class="mb-3 row">
                         <label for="fechaDesde" class="form-label col-sm-4 text-right col-form-label">Fecha
@@ -62,7 +62,7 @@
     <div class="col-8">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
-                <tr>
+                <tr class="text-muted text-center border-bottom border-success">
                     <th scope="col">Especie</th>
                     <th scope="col">Raza</th>
                     <th scope="col">Tratamiento</th>
@@ -73,7 +73,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let trat of listaTratamientos | filtroTrat: filtroTrat">
+                <tr class=" text-center border-bottom border-success" *ngFor="let trat of listaTratamientos | filtroTrat: filtroTrat |  paginate: { itemsPerPage: 5, currentPage: page }">
                     <td>{{ trat.especie }}</td>
                     <td>{{ trat.raza }}</td>
                     <td>{{ trat.nombreTratamiento }}</td>
@@ -86,6 +86,8 @@
         </table>
     </div>
     <div class="col-2"></div>
+    <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"></pagination-controls>
 
 
 

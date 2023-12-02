@@ -17,7 +17,7 @@
     <div class="col-8">
       <table id="listado" class="table table-hover text-center">
         <thead class="encabezado">
-          <tr class="text-muted">
+          <tr class="text-muted text-center border-bottom border-success">
             <th scope="col" class="col-3">Nombre y Apellido</th>
             <th scope="col" class="col-3">Usuario</th>
             <th scope="col" class="col-3">Email</th>
@@ -29,7 +29,7 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let user of users | filter: filterUsuarios |  paginate: { itemsPerPage: 5, currentPage: page }">
+          <tr class=" text-center border-bottom border-success" *ngFor="let user of users | filter: filterUsuarios |  paginate: { itemsPerPage: 5, currentPage: page }">
 
 
             <td>{{ user.nombreApellido }}</td>

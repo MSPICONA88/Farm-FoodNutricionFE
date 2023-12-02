@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ComandoUsuario } from 'src/app/Interfaces/comandoUsuario';
 import { Usuario } from 'src/app/Interfaces/usuario';
 import { environment } from 'src/environments/environment';
@@ -61,18 +61,31 @@ export class UsuarioService {
   }
 
   /* AUTHENTICATION SERVICES */
-  authenticateUser(view: string) {
+  // authenticateUser(view: string): Observable<boolean> {
+  //   let token = this.getToken();
+  //   if(token != "" && token != null) {
+  //     let rol = this.getRol();
+  //     var viewRol = view.concat('_').concat(rol);
+  //     if(this.userMapping.includes(viewRol)) {
+  //       return true;
+  //     }
+  //     return false;
+  //   } else {
+  //     this.router.navigate(['login']);
+  //     return false;
+  //   }
+  // }
+  authenticateUser(view: string): Observable<boolean> {
     let token = this.getToken();
-    if(token != "" && token != null) {
+
+    if (token != "" && token != null) {
       let rol = this.getRol();
       var viewRol = view.concat('_').concat(rol);
-      if(this.userMapping.includes(viewRol)) {
-        return true;
-      }
-      return false;
+
+      return of(this.userMapping.includes(viewRol));
     } else {
       this.router.navigate(['login']);
-      return false;
+      return of(false);
     }
   }
 }

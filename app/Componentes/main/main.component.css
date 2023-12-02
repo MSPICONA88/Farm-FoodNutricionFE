@@ -101,7 +101,7 @@ body {
 }
 
 .jumbotron {
-  background-color:rgb(163, 213, 177);
+  background-color: rgb(163, 213, 177);
 
 }
 
@@ -143,12 +143,12 @@ body {
 [class^="bi-"]::before,
 [class*=" bi-"]::before {
   margin-right: 5px;
-  
+
 }
 
 .link {
   color: white;
-  background-color:#03bb85;
+  background-color: #03bb85;
 }
 
 .navbar {
@@ -163,14 +163,18 @@ body {
 .dropdown-toggle {
   display: flex;
   align-items: center;
-  padding-right: 1rem; /* Espacio para la flecha */
+  padding-right: 1rem;
+  /* Espacio para la flecha */
 }
 
 /* Estilos para el contenido texto de Usuarios */
 .dropdown-toggle .item-text {
-  display: inline-block; /* Cambia a un elemento en línea */
-  vertical-align: middle; /* Centra verticalmente el texto */
-  margin-right: 0.2rem; /* Espacio entre el icono y la palabra "Usuarios" */
+  display: inline-block;
+  /* Cambia a un elemento en línea */
+  vertical-align: middle;
+  /* Centra verticalmente el texto */
+  margin-right: 0.2rem;
+  /* Espacio entre el icono y la palabra "Usuarios" */
 }
 
 /* Estilos para la flecha del dropdown */
@@ -178,24 +182,25 @@ body {
   content: "";
   /* font-size: 1rem;  */
   /* Ajusta el tamaño de la flecha según tus preferencias */
-  border-top: 0.35em solid; /* Aumenta el tamaño de la flecha */
+  border-top: 0.35em solid;
+  /* Aumenta el tamaño de la flecha */
   border-right: 0.35em solid transparent;
 }
 
-.encabezado{
-  background-color: #68d6b6 ;
+.encabezado {
+  background-color: #68d6b6;
 }
 
 
-button.accordion-button.collapsed.link::after{
+button.accordion-button.collapsed.link::after {
   color: white;
 }
 
-button.accordion-button.collapsed.link::before{
+button.accordion-button.collapsed.link::before {
   color: white;
 }
 
-button.accordion-button.collapsed.link.bi::before{
+button.accordion-button.collapsed.link.bi::before {
   color: white;
 }
 
@@ -208,13 +213,20 @@ button.accordion-button.collapsed.link.bi::before{
 } */
 
 
- .accordion-button:is(.collapsed)::after {
-        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;    
-    }
+.accordion-button:is(.collapsed)::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
 
-    .accordion-button:not(.collapsed)::after {
-        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;    
-    }
-/* .accordion-button.collapsed::after{
-  color: white;
-} */
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.container-form {
+  background-color: #dbe2db;
+  /* Color verde agua, puedes ajustarlo según tus preferencias */
+  padding: 20px;
+  /* Ajusta el relleno según sea necesario para separar el formulario del borde de la página */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* Ajusta el margen superior según sea necesario */
+}

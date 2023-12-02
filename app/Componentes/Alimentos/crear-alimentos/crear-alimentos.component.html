@@ -60,7 +60,7 @@
     <div class="row " style="justify-content: center;">
 
         <div class="col-4" style="margin-left: 100px; margin-right: 50px;">
-            <div class="border p-4 rounded mx-auto">
+            <div class="border p-4 rounded mx-auto border-dark">
                 <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
                     <div></div>
                     <!-- <div class="mb-3 row justify-content-center">
@@ -73,8 +73,9 @@
 
                     <div class="row text-center">
                         <div class="col-1"></div>
+                        
                         <div class="col-3">
-                            <label for="nombreAlimento" class="form-label col-sm-4 text-right col-form-label">Alimento</label>
+                            <label for="nombreAlimento" class="form-label col-sm-3 col-form-label mr-2">Alimento</label>
                         </div>
                         <div class="col-6">
                             <input type="text" class="form-control" formControlName="nombreAlimento"
@@ -101,16 +102,16 @@
         <!-- <div class="row mt-4 justify-content-center"> -->
         
         <div class="col-4" style="align-items: center; margin-left: 50px; margin-right: 100px;">
-            <div class="border p-4 rounded mx-auto">
+            <div class="border p-4 rounded mx-auto border-dark">
                 <div class="text-center" >
                     <table id="listado" class="table table-hover">
                         <thead class="encabezado">
-                            <tr class="text-muted text-center">
+                            <tr class="text-muted text-center border-bottom border-success" style="--bs-border-opacity: .5;">
                                 <th scope="col">Alimentos existentes</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center" *ngFor="let ali of listaAlimentos">
+                            <tr class="text-muted text-center border-bottom border-success" style="--bs-border-opacity: .5;" *ngFor="let ali of listaAlimentos">
                                 <td>{{ ali.nombreAlimento }}</td>
                             </tr>
                         </tbody>

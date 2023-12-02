@@ -27,16 +27,18 @@ export class LoginComponent {
 
     login() {
       if (this.validateParams()) {
-        this.loginServ.postLogin(this.loger.usuario, this.loger.password).subscribe(
-          (data) => {
+        this.loginServ.postLogin(this.loger.usuario, this.loger.password).subscribe({
+          next:(data) => {
             if (data.ok) {
-              this.loginServ.setToken(data.id_usuario, data.nombreUsuario, data.rol);
+              this.loginServ.setToken(data.idUsuario, data.nombreUsuario, data.rol);
+              console.log(data);
+              console.log(localStorage.getItem('token'));
               Swal.fire({
                 title: 'Bienvenido',
                 icon: 'success',
                 confirmButtonText: 'Ok',
               }).then(() => {
-                this.router.navigate(['/']);
+                this.router.navigate(['main']);
               });
             } else {
               Swal.fire({
@@ -47,7 +49,7 @@ export class LoginComponent {
               });
             }
           },
-          (err: HttpErrorResponse) => {
+          error:(err: HttpErrorResponse) => {
             
             
             if (err.status == HttpStatusCode.InternalServerError) {
@@ -58,7 +60,7 @@ export class LoginComponent {
               });
             }
           }
-        );
+      });
       } else {
         Swal.fire({
           title: 'Ingrese nombre de usuario y contraseña',

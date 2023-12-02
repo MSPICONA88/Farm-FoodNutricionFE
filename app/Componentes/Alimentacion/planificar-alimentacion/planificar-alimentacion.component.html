@@ -1,8 +1,7 @@
 <div class="container text-center">
     <h1 class="display-4 font-weight-bold text-muted mb-5">Planificar alimentación</h1>
 </div>
-<br>
-<h3>Listado de lotes</h3>
+<h3 class="text-center">Listado de lotes</h3>
 <br>
 <div class="container">
     <div class="row text-center">
@@ -26,7 +25,7 @@
     <div class="col-10">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
-                <tr>
+                <tr class="text-muted text-center border-bottom border-success">
                     <th scope="col">#</th>
                     <th scope="col">Fecha ingreso</th>
                     <th scope="col">Finalidad</th>
@@ -39,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                <tr class=" text-center border-bottom border-success" *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
                     <th scope="row">{{lote.idLote}}</th>
                     <td>{{ formatFechaIngreso(lote.fechaIngreso) }}</td>
                     <td>{{ lote.finalidad }}</td>

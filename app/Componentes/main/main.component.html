@@ -1,536 +1,288 @@
 <!-- Bootstrap Static Header -->
 
+<!-- Agregar ng-content con bandera de usuario autenticado -->
+<div class="ng-content" *ngIf="logueado">
 
-<div class="sidebar-nav">
-  <nav class="navbar navbar-dark fixed-top">
-    <div class="container">
-      <!-- Mobile Menu Toggle Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <!-- Menus List -->
-      <div class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel" style="position: fixed;">
-        <div class="offcanvas-body" style="margin-top: 50px">
-          <ul class="navbar-nav">
-            <!-- MENU USUARIOS -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample1">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      <i class="bi bi-person-fill link"></i> <span class="text-white">Usuarios</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" href="#" routerLink="crearUsu"><span class="item-text ">Registrar
-                            usuario</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" href="#" routerLink="consultarUsu"><span class="item-text ">Consultar
-                            usuarios</span></a></li>
+  <div class="sidebar-nav">
+    <nav class="navbar navbar-dark fixed-top">
+      <div class="container">
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menus List -->
+        <div class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel" style="position: fixed;">
+          <div class="offcanvas-body" style="margin-top: 50px">
+            <ul class="navbar-nav">
+
+              <!-- MENU DIETAS -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample2">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <i class="bi bi-basket3-fill"></i> <span class="text-white">Dietas</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="alimentos" href="#"><span
+                              class="item-text ">Registrar
+                              alimento</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarDieta" ref="#"><span
+                              class="item-text ">Registrar
+                              dieta</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="consultarDieta" href="#"><span
+                              class="item-text ">Consultar
+                              dieta</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- MENU DIETAS -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample2">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      <i class="bi bi-basket3-fill"></i> <span class="text-white">Dietas</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample2">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="alimentos" href="#"><span class="item-text ">Registrar
-                            alimento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarDieta" ref="#"><span class="item-text ">Registrar
-                            dieta</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarDieta" href="#"><span class="item-text ">Consultar
-                            dieta</span></a></li>
+
+              <!-- MENU ALIMENTACION -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample3">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <i class="bi bi-calendar-heart-fill"></i> <span class="text-white">Alimentación</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample3">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="planificarAli" href="#"><span
+                              class="item-text ">Planificar alimentación</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarAli" href="#"><span
+                              class="item-text ">Registrar alimentación</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- MENU ALIMENTACION -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample3">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      <i class="bi bi-calendar-heart-fill"></i> <span class="text-white">Alimentación</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample3">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="planificarAli" href="#"><span class="item-text ">Planificar alimentación</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarAli" href="#"><span class="item-text ">Registrar alimentación</span></a></li>
+              <!-- MENU TRATAMIENTO -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample4">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        <i class="bi bi-bandaid-fill"></i> <span class="text-white">Tratamientos</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample4">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarTrat" href="#"><span
+                              class="item-text ">Registrar tratamiento</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="consultarTrat" href="#"><span
+                              class="item-text ">Consultar tratamientos</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- MENU TRATAMIENTO -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample4">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                      <i class="bi bi-bandaid-fill"></i> <span class="text-white">Tratamientos</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseFour" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample4">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarTrat" href="#"><span class="item-text ">Registrar tratamiento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarTrat" href="#"><span class="item-text ">Consultar tratamientos</span></a></li>
+              <!-- MENU LOTES -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample6">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <i class="bi bi-collection-fill"></i> <span class="text-white">Lotes</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample6">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarLotes" href="#"><span
+                              class="item-text ">Agregar lote</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="listaLotes" href="#"><span
+                              class="item-text ">Consultar lotes</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="consultarLotes" href="#"><span
+                              class="item-text ">Actualizar lotes</span></a></li>
+                        <!-- <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="egresarLotes" href="#"><span class="item-text ">Egreso de lotes</span></a></li> -->
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="quitarAnimales" href="#"><span
+                              class="item-text ">Quitar animales</span></a></li>
+                        <!-- <li><a class="list-group-item dropdown-item" routerLink="modificarLotes" href="#"><span class="item-text ">Modificar lote</span></a></li> -->
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- MENU LOTES -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample6">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                      <i class="bi bi-collection-fill"></i> <span class="text-white">Lotes</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseSix" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample6">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarLotes" href="#"><span class="item-text ">Agregar lote</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="listaLotes" href="#"><span class="item-text ">Consultar lotes</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarLotes" href="#"><span class="item-text ">Actualizar lotes</span></a></li>
-                      <!-- <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="egresarLotes" href="#"><span class="item-text ">Egreso de lotes</span></a></li> -->
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="quitarAnimales" href="#"><span class="item-text ">Quitar animales</span></a></li>
-                      <!-- <li><a class="list-group-item dropdown-item" routerLink="modificarLotes" href="#"><span class="item-text ">Modificar lote</span></a></li> -->
+              <!-- MENU STOCK -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample7">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                        <i class="bi bi-bag-plus-fill"></i> <span class="text-white">Stock alimentos</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseSeven" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample7">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarStock" href="#"><span
+                              class="item-text ">Registrar stock</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="consultarStock" href="#"><span
+                              class="item-text ">Consultar stock</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="registrarMov" href="#"><span
+                              class="item-text ">Registrar movimiento</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="consultarMov" href="#"><span
+                              class="item-text ">Consultar movimiento</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- MENU STOCK -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample7">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-                      <i class="bi bi-bag-plus-fill"></i> <span class="text-white">Stock alimentos</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseSeven" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample7">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarStock" href="#"><span class="item-text ">Registrar stock</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarStock" href="#"><span class="item-text ">Consultar stock</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="registrarMov" href="#"><span class="item-text ">Registrar movimiento</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="consultarMov" href="#"><span class="item-text ">Consultar movimiento</span></a></li>
+              <!-- MENU REPORTES -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample8">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+                        <i class="bi bi-bar-chart-line-fill"></i> <span class="text-white">Reportes</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseEight" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample8">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="reportStackBarAni" href="#"><span
+                              class="item-text ">Animales disponibles</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="reportCardPeso" href="#"><span
+                              class="item-text ">Peso animales</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="reportLineIngreso" href="#"><span
+                              class="item-text ">Ingreso animales</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="reportListAliNecesario" href="#"><span
+                              class="item-text ">Stock necesario</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- MENU REPORTES -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample8">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                      <i class="bi bi-bar-chart-line-fill"></i> <span class="text-white">Reportes</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseEight" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample8">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportStackBarAni" href="#"><span class="item-text ">Animales disponibles</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportCardPeso" href="#"><span class="item-text ">Peso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportLineIngreso" href="#"><span class="item-text ">Ingreso animales</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="reportListAliNecesario" href="#"><span class="item-text ">Stock necesario</span></a></li>
+              <!-- MENU USUARIOS -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample1">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <i class="bi bi-person-fill link"></i> <span class="text-white">Usuarios</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" href="#" routerLink="crearUsu"><span
+                              class="item-text ">Registrar
+                              usuario</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" href="#" routerLink="consultarUsu"><span
+                              class="item-text ">Consultar
+                              usuarios</span></a></li>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- PREGUNTAS FRECUENTES -->
-            <div>
-              <div class="accordion accordion-flush" id="accordionFlushExample9">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed link"  type="button" data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-                      <i class="bi bi-question-octagon-fill "></i> <span class="text-white">Acerca de</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseNine" class="accordion-collapse collapse link"
-                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample9">
-                    <div class="accordion-body">
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="preguntas" href="#"><span class="item-text ">Preguntas frecuentes</span></a></li>
-                      <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="terminos" href="#"><span class="item-text ">Términos y condiciones</span></a></li>
-                      <!-- <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Ingreso animales</span></a></li>
+              <!-- PREGUNTAS FRECUENTES -->
+              <div>
+                <div class="accordion accordion-flush" id="accordionFlushExample9">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed link" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                        <i class="bi bi-question-octagon-fill "></i> <span class="text-white">Acerca de</span>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseNine" class="accordion-collapse collapse link"
+                      aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample9">
+                      <div class="accordion-body">
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="preguntas" href="#"><span
+                              class="item-text ">Preguntas frecuentes</span></a></li>
+                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" routerLink="terminos" href="#"><span
+                              class="item-text ">Términos y condiciones</span></a></li>
+                        <!-- <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Ingreso animales</span></a></li>
                       <li><a class="list-group-item dropdown-item" href="#"><span class="item-text ">Stock necesario</span></a></li> -->
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- <li><a class="link" routerLink="alimentos"><i class="bi bi-basket3-fill "></i> <span
-                  class="item-text ">Alimentos</span></a></li> -->
-            <!-- <li><a class="link" routerLink="lotes"><i class="bi bi-collection-fill "></i> <span
-                  class="item-text ">Lotes</span></a></li> -->
-            <!-- <li><a class="link" routerLink="planificacion"><i class="bi bi-calendar-heart-fill "></i> <span
-                  class="item-text ">Planificación</span></a></li> -->
-            <!-- <li><a class="link" routerLink="tratamientos"><i class="bi bi-bandaid-fill "></i> <span
-                  class="item-text ">Tratamientos</span></a></li> -->
-            <!-- <li><a class="link" routerLink="reportes"><i class="bi bi-bar-chart-line-fill "></i> <span
-                  class="item-text ">Reportes</span></a></li> -->
-            <!-- <li><a class="link" routerLink="preguntas"><i class="bi bi-question-octagon-fill "></i> <span
-                  class="item-text ">Preguntas Frecuentes</span></a></li> -->
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="btn-group">
-        <a href="#" class="dropdown-toggle text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="btn-group">
+          <a href="#" class="dropdown-toggle text-white text-decoration-none" data-bs-toggle="dropdown"
+            aria-expanded="false">
             <span class="usericon"><i class="bi bi-person-circle"></i></span>
             <span class="textnone">{{user.usuario1}}</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
             <!-- <li><button class="dropdown-item" type="button"><i class="bi bi-lock-fill"></i> Change Password</button></li>
             <li><button class="dropdown-item" type="button"><i class="bi bi-gear-fill"></i> Admin Setion</button></li> -->
             <li class="dropdown-item" type="label"><i class="bi bi-gear-wide-connected"></i> Rol: {{user.rol}}</li>
-            <li><hr class="dropdown-divider"></li>
-            <li (click)="logOut()"><button class="dropdown-item" type="button"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button></li>
-        </ul>
-    </div>
-
-    </div>
-  </nav>
-</div>
-
-<!-- CONTENEDOR DE LA PAGINA -->
-<div class="container mx-auto">
-  <router-outlet></router-outlet>
-</div>
-
-
-<!-- -------------------------
-<div>
-  <div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-10">
-      <div class="jumbotron text-white text-center">
-        <div class col>
-          <div class="container fluid py-3 text-center">
-            <h1 *ngIf="isHome" class="display-4 font-weight-bold text-center">FARM&FOOD NUTRICION</h1>
-            <h1 *ngIf="isCrearUsuario" class="display-4 font-weight-bold text-center">CREAR USUARIO</h1>
-            <h1 *ngIf="isConsultarUsuarios" class="display-4 font-weight-bold text-center">CONSULTAR USUARIOS</h1>
-            <h1 *ngIf="isCrearAlimentos" class="display-4 font-weight-bold text-center">CREAR ALIMENTOS</h1>
-            <h1 *ngIf="isRegistrarLote || isConsultarLote" class="display-4 font-weight-bold text-center">LOTES</h1>
-            <h1 *ngIf="isRegistrarTrat || isConsultarTrat" class="display-4 font-weight-bold text-center">TRATAMIENTOS
-            </h1>
-            <h1 *ngIf="isIngresarStock" class="display-4 font-weight-bold text-center">INGRESAR STOCK</h1>
-            <h1 *ngIf="isConsultarStockPorFecha" class="display-4 font-weight-bold text-center">CONSULTAR INGRESO</h1>
-            <h1 *ngIf="isConsultarStockPorAli" class="display-4 font-weight-bold text-center">CONSULTAR STOCK ALIMENTOS
-            </h1>
-            <h1 *ngIf="isRegistrarMoviStock" class="display-4 font-weight-bold text-center">REGISTRAR MOVIMIENTO STOCK
-            </h1>
-            <h1 *ngIf="isRegistrarDieta" class="display-4 font-weight-bold text-center">REGISTRAR NUEVA DIETA</h1>
-            <h1 *ngIf="isPlanificarAli" class="display-4 font-weight-bold text-center">PLANIFICAR ALIMENTACION</h1>
-            <h1 *ngIf="isRegistrarAli" class="display-4 font-weight-bold text-center">REGISTRAR ALIMENTACION</h1>
-            <h1 *ngIf="isStackBarAnimales" class="display-4 font-weight-bold text-center">CANTIDAD DE ANIMALES</h1>
-            <h1 *ngIf="isLineIngresoAni" class="display-4 font-weight-bold text-center">INGRESO POR ESPECIES</h1>
-            <h1 *ngIf="isConsultarPlani" class="display-4 font-weight-bold text-center">CONSULTAR PLANIFICACION</h1>
-            <h1 *ngIf="isPreguntas" class="display-4 font-weight-bold text-center">PREGUNTAS FRECUENTES</h1>
-          </div>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li (click)="logOut()"><button class="dropdown-item" type="button"><i class="bi bi-box-arrow-right"></i>
+                Cerrar sesión</button></li>
+          </ul>
         </div>
+
       </div>
-    </div>
-  </div> -->
-
-
-<!-- Vertical navbar -->
-<!-- <div class="row">
-    <div class="col-2">
-      <div class="vertical-nav bg-white" id="sidebar">
-        <div class="py-4 px-3 mb-4 bg-light">
-          <div class="media mx-3 d-flex align-items-center">
-            <img *ngIf="user.rol == 'Administrador'" src="\assets\Imagenes\perfil1.jpeg" alt="..." width="65"
-              class="mr-3 rounded-circle img-thumbnail shadow-sm">
-            <img *ngIf="user.rol == 'Veterinario'" src="\assets\Imagenes\perfil2.png" alt="..." width="65"
-              class="mr-3 rounded-circle img-thumbnail shadow-sm">
-            <img *ngIf="user.rol == 'Operador'" src="\assets\Imagenes\perfil3.png" alt="..." width="65"
-              class="mr-3 rounded-circle img-thumbnail shadow-sm">
-
-            <div class="media-body mx-3">
-              <h4 class="m-0">{{ user.usuario1 }}</h4>
-              <p class="font-weight-light text-muted mb-0">{{ user.rol }}</p>
-            </div>
-          </div>
-          <div>
-            <button class="btn mx-3" (click)="logOut()"><b>Cerrar Sesión</b></button>
-          </div>
-        </div>
-
-        <div class="sc">
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">INICIO</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic " (click)="home()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Acerca de
-              </a>
-              <a href="#" class="nav-link text-dark font-italic " (click)="preguntas()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Preguntas Frecuentes
-              </a>
-            </li>
-          </ul>
-
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">GESTION USUARIOS</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="crearUsuario()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Crear Usuarios
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarUsuarios()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Consultar Usuarios
-              </a>
-            </li>
-          </ul>
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">PLANIFICAR ALIMENTACION</p>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <i class="fa fa-th-large mr-3 px-2 py-2 text-primary fa-fw"></i>
-              DIETA
-              <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-dark font-italic" (click)="crearAlimentos()">
-                    <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                    Crear Alimentos
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-dark font-italic" (click)="registrarDieta()">
-                    <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                    Registrar Dieta
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-dark font-italic" (click)="consultarDieta()">
-                    <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                    Consultar Dieta
-                  </a>
-                </li>
-              </ul>
-              <i class="fa fa-th-large mr-3 px-2 py-2 text-primary fa-fw"></i>
-              PLANIFICAR ALIMENTACION
-              <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-dark font-italic" (click)="planificarAli()">
-                   
-                  </a>
-                </li>
-              </ul>
-            
-              <i class="fa fa-th-large mr-3 px-2 py-2 text-primary fa-fw" (click)="registrarAli()"></i>
-              REGISTRAR ALIMENTACION
-              <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-dark font-italic" (click)="registrarAli()">
-                    
-                  </a>
-                </li>
-              </ul>
-        
-            </li>
-          </ul>
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">TRATAMIENTOS</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="crearTratamiento()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Registrar tratamiento
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarTratamiento()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Consultar tratamiento
-              </a>
-            </li>
-          </ul>
-
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">LOTES</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="registrarLote()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Registrar Lote
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarLote()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Consultar Lote
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="modificarLote()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Modificar Lote
-              </a>
-            </li>
-          </ul>
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">STOCK</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="ingresarStock()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Ingresar stock
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarStockPorFecha()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Consultar movimientos
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarStockPorAli()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Consultar stock
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="registrarMoviStock()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Registrar Movimiento
-              </a>
-            </li>
-          </ul>
-          <p class="text-gray font-weight-bold text-uppercase px-3 small py-2 mb-0 bg-light">REPORTES</p>
-
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="reporteAnimales()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Animales disponibles
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="pesoAnimales()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Peso Animales
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="ingresoAnimales()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Ingreso de Animales
-              </a>
-            </li>
-          </ul>
-          <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-dark font-italic" (click)="consultarPlani()">
-                <i class="fa fa-th-large mr-3 px-3 text-primary fa-fw"></i>
-                Stock necesario
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-
-
-<!-- End vertical navbar -->
-
-<!-- Page content holder -->
-<!-- <div class="col-10">
-    <div class="page-content p-5" id="content">
-      <app-home *ngIf="isHome"></app-home>
-      <app-user *ngIf="isCrearUsuario"></app-user>
-      <app-consultar *ngIf="isConsultarUsuarios"></app-consultar>
-      <app-crear-alimentos *ngIf="isCrearAlimentos"></app-crear-alimentos>
-      <app-registrar-lotes *ngIf="isRegistrarLote"></app-registrar-lotes>
-      <app-registrar-trat *ngIf="isRegistrarTrat"></app-registrar-trat>
-      <app-consultar-trat *ngIf="isConsultarTrat"></app-consultar-trat>
-      <app-consultar-lote *ngIf="isConsultarLote"></app-consultar-lote>
-      <app-modificar-lote *ngIf="isModificarLote"></app-modificar-lote>
-      <app-ingresar-stock *ngIf="isIngresarStock"></app-ingresar-stock>
-      <app-consultar-ingreso *ngIf="isConsultarStockPorFecha"></app-consultar-ingreso>
-      <app-consultar-stock-ali *ngIf="isConsultarStockPorAli"></app-consultar-stock-ali>
-      <app-registrar-movi *ngIf="isRegistrarMoviStock"></app-registrar-movi>
-      <app-registrar-dieta *ngIf="isRegistrarDieta"></app-registrar-dieta>
-      <app-consultar-dieta *ngIf="isConsultarDieta"></app-consultar-dieta>
-      <app-planificar-alimentacion *ngIf="isPlanificarAli"></app-planificar-alimentacion>
-      <app-registrar-alimentacion *ngIf="isRegistrarAli"></app-registrar-alimentacion>
-      <app-stack-bar-animales *ngIf="isStackBarAnimales"></app-stack-bar-animales>
-      <app-card-peso-list *ngIf="isCardPesoAnimales"></app-card-peso-list>
-      <app-line-ingreso-animales *ngIf="isLineIngresoAni"></app-line-ingreso-animales>
-      <app-consultar-plani *ngIf="isConsultarPlani"></app-consultar-plani>
-      <app-preguntas-frecuentes *ngIf="isPreguntas"></app-preguntas-frecuentes>
-    </div>
+    </nav>
   </div>
-</div> -->
-<!-- End demo content -->
+  <!-- CONTENEDOR DE LA PAGINA -->
+  <div class="container mx-auto container-form">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+
+<ng-template #noPermisos>
+  <!-- Mensaje para usuario sin permisos -->
+  <div class="container text-center mt-5">
+    <h2>No tienes los permisos necesarios para ver esta página.</h2>
+  </div>
+</ng-template>

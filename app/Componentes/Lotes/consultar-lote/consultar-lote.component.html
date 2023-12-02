@@ -1,8 +1,7 @@
 <div class="container text-center">
     <h1 class="display-4 font-weight-bold text-muted mb-5">Actualizar lotes</h1>
   </div>
-<br>
-<h3>Gestión de lotes</h3>
+<h3 class="text-center">Gestión de lotes</h3>
 <br>
 <div class="container">
     <div class="row text-center">
@@ -25,7 +24,7 @@
     <div class="">
         <table id="listado" class="table table-hover text-center">
             <thead class="encabezado">
-                <tr>
+                <tr class="text-muted text-center border-bottom border-success">
                     <th scope="col" data-sortable="true">#</th>
                     <th scope="col" data-sortable="true">Fecha Ingreso</th>
                     <th scope="col" data-sortable="true" >Finalidad</th>
@@ -39,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                <tr class=" text-center border-bottom border-success" *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
                     <th scope="row">{{lote.idLote}}</th>
                     <td>{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
                     <td>{{ lote.finalidad }}</td>

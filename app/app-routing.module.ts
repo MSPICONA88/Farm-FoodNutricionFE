@@ -46,8 +46,8 @@ import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes
 // ];
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: 'login', component: LoginComponent},
+  {path: "", component: LoginComponent},
+  // {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: "crearUsu", component: UserComponent},
   {path: "consultarUsu", component: ConsultarComponent},
@@ -79,6 +79,8 @@ const routes: Routes = [
   {path: "egresarLotes/:idLote", component: EgresarLotesComponent},
   {path: "quitarAnimales", component: QuitarAnimalesComponent},
   {path: "listaLotes", component: ListaLotesComponent},
+  {path: "main", component: MainComponent}
+  
 ];
 
 
