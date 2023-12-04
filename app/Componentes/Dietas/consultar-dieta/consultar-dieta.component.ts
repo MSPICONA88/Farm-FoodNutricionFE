@@ -140,7 +140,7 @@ export class ConsultarDietaComponent {
         });
 
       } else {
-        this.router.navigate(['/modificardieta', idDieta]);;
+        this.router.navigate(['main/modificardieta', idDieta]);;
       }
     });
   }

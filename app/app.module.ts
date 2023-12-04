@@ -32,7 +32,7 @@ import { FiltroTratPipe } from './Pipes/filtro-trat.pipe';
 import { StackBarAnimalesComponent } from './Componentes/Reportes/stack-bar-animales/stack-bar-animales.component';
 import { CardPesoListComponent } from './Componentes/Reportes/card-peso-list/card-peso-list.component';
 import { LineIngresoAnimalesComponent } from './Componentes/Reportes/line-ingreso-animales/line-ingreso-animales.component';
-import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
+import { ControlStockComponent } from './Componentes/Reportes/control-stock/control-stock.component';
 import { FiltroStockPipe } from './Pipes/filtro-stock.pipe';
 import { PreguntasFrecuentesComponent } from './Componentes/home/preguntas-frecuentes/preguntas-frecuentes.component';
 import { CustomNumberPipe } from './Pipes/custom-number.pipe';
@@ -44,6 +44,7 @@ import localeEs from '@angular/common/locales/es';
 import { EgresarLotesComponent } from './Componentes/Lotes/egresar-lotes/egresar-lotes.component';
 import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/quitar-animales.component';
 import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
+import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
 
 
 
@@ -84,14 +85,15 @@ registerLocaleData(localeEs);
     StackBarAnimalesComponent,
     CardPesoListComponent,
     LineIngresoAnimalesComponent,
-    ConsultarPlaniComponent,
+    ControlStockComponent,
     FiltroStockPipe,
     PreguntasFrecuentesComponent,
     CustomNumberPipe,
     TerminosYCondicionesComponent,
     EgresarLotesComponent,
     QuitarAnimalesComponent,
-    ListaLotesComponent
+    ListaLotesComponent,
+    ConsultarPlaniComponent
     
   ],
   imports: [
@@ -101,6 +103,7 @@ registerLocaleData(localeEs);
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    
 
     
   ],

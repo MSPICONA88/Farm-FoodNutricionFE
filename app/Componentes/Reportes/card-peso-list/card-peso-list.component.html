@@ -52,5 +52,42 @@
     </div>
 
 </div>
+<div class="row">
+    <div class="">
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr class="text-muted text-center border-bottom border-success">
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha ingreso</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Finalidad</th>
+                    <th scope="col">Edad en meses</th>
+                    <th scope="col">Peso ingreso</th>
+                    <th scope="col">Peso actual</th>
+                    <th scope="col">Peso prom x animal</th>
+                    <!-- <th scope="col">Peso ingreso</th> -->
+                    <!-- <th scope="col">Acción</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr class=" text-center border-bottom border-success" *ngFor="let lote of listaLotes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{lote.idLote}}</th>
+                    <td>{{ formatFechaIngreso(lote.fechaIngreso)  }}</td>
+                    <td>{{ lote.especie }}</td>
+                    <td>{{ lote.raza }}</td>
+                    <td>{{ lote.finalidad }}</td>
+                    <td class="text-right">{{ lote.edadMeses| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoIngreso| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoAproxActual| customNumber }}</td>
+                    <td class="text-right">{{ lote.pesoPromedioPorAnimalIngreso| customNumber }}</td>
+                    <!-- <td>{{ lote.fechaEgreso | date:'dd-MM-yyyy'}}</td>
+                    <td class="text-right">{{ lote.pesoIgreso | customNumber}}</td> -->
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
     screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"></pagination-controls>

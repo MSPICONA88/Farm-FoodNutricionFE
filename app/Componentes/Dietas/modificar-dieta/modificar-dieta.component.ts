@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -66,6 +67,9 @@ export class ModificarDietaComponent {
     const alimentosFormArray = this.dietaForm.get('alimentos') as FormArray;
     alimentosFormArray.push(this.crearFormGroupAlimento()); 
     console.log(alimentosFormArray)
+    
+    
+
     //nuevo:
     // const nuevoAlimento = this.crearFormGroupAlimento();
     // const alimentoSeleccionado = this.listaAlimentos.find(alimento => alimento.idAlimento === nuevoAlimento.value.idAlimento);
@@ -86,8 +90,8 @@ export class ModificarDietaComponent {
   crearFormGroupAlimento(): FormGroup {
     return this.formBuilder.group({
       idAlimento: [''],
-      //nombreAlimento: ['', Validators.required],
-      porcentaje: ['', Validators.required]
+      nombreAlimento: [''],
+      porcentaje: ['']
     });
   }
 
@@ -120,13 +124,28 @@ export class ModificarDietaComponent {
     );
   }
   
+  actualizarDetalles(detalles: any[]): void {
+    const alimentosFormArray = this.dietaForm.get('alimentos') as FormArray;
+  
+    detalles.forEach((detalle, index) => {
+      const formulario = alimentosFormArray.at(index) as FormGroup;
+      formulario.patchValue(detalle);
+    });
+  }
   
 
   guardar(): void {
-    if (this.dietaForm.invalid) {
-      console.log(this.dietaForm.status);
-      return;
-    }
+    // Obtén los valores actuales del FormArray
+  const detalles = (this.dietaForm.get('alimentos') as FormArray).value;
+
+  // Llama a la función para actualizar los detalles del formulario
+  // Transforma los datos antes de enviar a la API
+  const alimentosSinNombre = detalles.map((alimento: any) => {
+    return {
+      idAlimento: alimento.idAlimento,
+      porcentaje: alimento.porcentaje
+    };
+  });
   
     const formData = { ...this.dietaForm.value }; // Clonar los datos del formulario
   
@@ -135,7 +154,7 @@ export class ModificarDietaComponent {
       nombreDieta: formData.nombreDieta,
       fechaCreacion: formData.fechaCreacion,
       observacion: formData.observacion,
-      alimentos: formData.alimentos
+      alimentos: alimentosSinNombre
     };
   
     this.dietaService.updateDieta(this.idDieta, dietaDetalleDTO).subscribe(
@@ -146,25 +165,27 @@ export class ModificarDietaComponent {
             title:'Dieta modificada con éxito',
             icon: 'success',
             confirmButtonText: 'Ok',
+          }).then(() => {
+            this.router.navigate(['main/consultarDietas'])
           });
-          this.router.navigate(['/consultarDietas']); // Redirige a la lista de dietas  
-        } else if(data.statusCode === 400){
-          const errorMessage = data.error || 'Error al modificar la dieta';
-          alert(errorMessage);
-          Swal.fire({
-            title:errorMessage,
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-        } else {
-          Swal.fire({
-            title:'Error al modificar la dieta',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-        }
+          // this.router.navigate(['main/consultarDietas']); // Redirige a la lista de dietas  
+        } 
+        // else {
+        //   const errorMessage = data.HttpErrorResponse || 'Error al modificar la dieta';
+        //   // alert(errorMessage);
+        //   Swal.fire({
+        //     title:errorMessage,
+        //     icon: 'error',
+        //     confirmButtonText: 'Ok',
+        //   });
+        // }
       },
       (error: any) => {
+        Swal.fire({
+          title:error.error,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
         console.error(error);
       }
     );

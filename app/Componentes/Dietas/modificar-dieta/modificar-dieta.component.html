@@ -8,7 +8,7 @@
 
         <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
             <div class="border p-4 rounded mx-auto border-dark">
-                <form [formGroup]="dietaForm" (ngSubmit)="guardar()">
+                <form [formGroup]="dietaForm" >
                     <div class="form-group mb-3 row">
                         <label class="form-label col-sm-3 text-right col-form-label" for="nombreDieta">Nombre
                             Dieta</label>
@@ -166,7 +166,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
                 </form>
             </div>
         </div>

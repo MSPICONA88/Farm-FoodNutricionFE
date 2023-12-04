@@ -1,5 +1,5 @@
 export class PlanesAli {
-    idPlan?: number;
+    idPlan: number;
     idLote: number;
     nombreEspecie: string;
     raza: string;

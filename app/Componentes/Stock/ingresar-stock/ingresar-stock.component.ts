@@ -95,6 +95,10 @@ export class IngresarStockComponent {
   }
 
 
+  crearAlimento(){
+    this.router.navigate(['main/alimentos']);
+  }
+  
   limpiarForm() {
     this.formularioGroup.reset();
     

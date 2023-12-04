@@ -26,11 +26,12 @@ import { CardPesoListComponent } from './Componentes/Reportes/card-peso-list/car
 import { LineIngresoAnimalesComponent } from './Componentes/Reportes/line-ingreso-animales/line-ingreso-animales.component';
 import { StackBarAnimalesComponent } from './Componentes/Reportes/stack-bar-animales/stack-bar-animales.component';
 import { PreguntasFrecuentesComponent } from './Componentes/home/preguntas-frecuentes/preguntas-frecuentes.component';
-import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
+import { ControlStockComponent } from './Componentes/Reportes/control-stock/control-stock.component';
 import { TerminosYCondicionesComponent } from './Componentes/home/terminos-ycondiciones/terminos-ycondiciones.component';
 import { EgresarLotesComponent } from './Componentes/Lotes/egresar-lotes/egresar-lotes.component';
 import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/quitar-animales.component';
 import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
+import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
 
 
 
@@ -45,15 +46,16 @@ import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes
  
 // ];
 
-const routes: Routes = [
-  {path: "", component: LoginComponent},
-  // {path: 'login', component: LoginComponent},
+
+
+
+const rutasHijas: Routes =[
   {path: 'home', component: HomeComponent},
   {path: "crearUsu", component: UserComponent},
   {path: "consultarUsu", component: ConsultarComponent},
   {path: "registrarlote", component: RegistrarLotesComponent },
   {path: "consultarDietas", component: ConsultarDietaComponent },
-  {path: "modificarlote/:idLote", component: ModificarLoteComponent},
+  {path: "consultarLotes/modificarlote/:idLote", component: ModificarLoteComponent},
   {path: "modificardieta/:idDieta", component: ModificarDietaComponent},
   {path: "deletelote/:idLote", component: DeleteLoteComponent},
   {path: "alimentos", component: CreaAlimentosComponent},
@@ -61,6 +63,7 @@ const routes: Routes = [
   {path: "consultarDieta", component: ConsultarDietaComponent},
   {path: "planificarAli", component: PlanificarAlimentacionComponent},
   {path: "registrarAli", component: RegistrarAlimentacionComponent},
+  {path: "consultarPlani", component: ConsultarPlaniComponent},
   {path: "registrarTrat", component: RegistrarTratComponent},
   {path: "consultarTrat", component: ConsultarTratComponent},
   {path: "registrarLotes", component: RegistrarLotesComponent},
@@ -73,30 +76,21 @@ const routes: Routes = [
   {path: "reportCardPeso", component: CardPesoListComponent},
   {path: "reportLineIngreso", component: LineIngresoAnimalesComponent},
   {path: "reportStackBarAni", component: StackBarAnimalesComponent},
-  {path: "reportListAliNecesario", component: ConsultarPlaniComponent},
+  {path: "reportListAliNecesario", component: ControlStockComponent},
   {path: "preguntas", component: PreguntasFrecuentesComponent},
   {path: "terminos", component: TerminosYCondicionesComponent},
-  {path: "egresarLotes/:idLote", component: EgresarLotesComponent},
+  {path: "consultarLotes/egresarLotes/:idLote", component: EgresarLotesComponent},
   {path: "quitarAnimales", component: QuitarAnimalesComponent},
-  {path: "listaLotes", component: ListaLotesComponent},
-  {path: "main", component: MainComponent}
-  
+  {path: "listaLotes", component: ListaLotesComponent}
+
 ];
 
-
-// const rutasHijas: Routes =[
-//   {path: 'usuariosForms', component: UsuariosFormsComponent},
-//   {path: 'usuarios', component: UsuariosComponent},
-//   {path: 'salas', component: SalasComponent},
-//   {path: 'docentes', component: DocentesComponent},
-//   {path: 'alumnos', component: AlumnosComponent},
-//   {path: 'noticias', component: NoticiasFormsComponent},
-//   {path: 'actividades', component: NoticiasFormsComponent},
-//   {path: 'mensajes', component: NoticiasFormsComponent},
-//   {path: 'notificaciones', component: NoticiasFormsComponent},
-//   {path: 'tareas', component: NoticiasFormsComponent},
-
-// ];
+const routes: Routes = [
+  {path: "", component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: "main", component: MainComponent, children: rutasHijas}
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

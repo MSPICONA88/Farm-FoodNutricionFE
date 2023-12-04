@@ -17,9 +17,12 @@ export class MainComponent {
   token: string;
   logueado: boolean=false;
 
-  constructor(private router: Router, private userServ: UsuarioService) { }
+  constructor(private router: Router, private userServ: UsuarioService) { 
+    
+  }
 
   ngOnInit(): void {
+    // this.router.navigate(['login']);
     this.setUserLogged();
     // this.validacionLogueo();
   }

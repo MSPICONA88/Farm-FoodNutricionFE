@@ -96,7 +96,7 @@ export class StackBarAnimalesComponent {
       new Set(this.datosAnimales.map((animal) => animal.especie))
     );
     const colores = this.generarColores(especiesUnicas.length);
-  
+
     const datasetsPorEspecie = especiesUnicas.map((especie, especieIndex) => {
       const datosPorEspecie = this.datosAnimales
         .filter((animal) => animal.especie === especie)
@@ -107,14 +107,14 @@ export class StackBarAnimalesComponent {
           borderColor: colores[2],
           borderWidth: 1,
         }));
-  
+
       return datosPorEspecie;
     });
-  
+
     const razasUnicas = Array.from(
       new Set(this.datosAnimales.map((animal) => animal.raza))
     );
-  
+
     const datasets = razasUnicas.map((raza, razaIndex) => {
       return {
         label: raza,
@@ -127,8 +127,13 @@ export class StackBarAnimalesComponent {
         borderWidth: 1,
       };
     });
-  
+
     const ctx = document.getElementById('stackedBar') as HTMLCanvasElement;
+    // Verificar si ya existe un gráfico en el lienzo y destruirlo
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+      existingChart.destroy();
+    }
     const miGrafico = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -138,7 +143,7 @@ export class StackBarAnimalesComponent {
       options: {
         scales: {
           y: {
-            stacked:true,
+            stacked: true,
             beginAtZero: true,
             title: {
               display: true,
@@ -147,7 +152,7 @@ export class StackBarAnimalesComponent {
             },
           },
           x: {
-            stacked:true,
+            stacked: true,
             title: {
               display: true,
               color: 'black',
@@ -366,4 +371,15 @@ export class StackBarAnimalesComponent {
     return this.formularioGroup.controls['raza'] as FormControl
   }
 
+
+  limpiarYRecargarGrafico() {
+    // Limpiar valores del formulario
+    this.formularioGroup.reset();
+
+    // Cargar gráfico por defecto
+    this.animalService.getAllAnimales().subscribe((datos: AnimalData[]) => {
+      this.datosAnimales = datos;
+      this.crearGrafico();
+    });
+  }
 }

@@ -29,6 +29,13 @@ export class AlimentacionService {
     return this.http.post<any>(`${this.apiUrlBase2}/registrar`, ali);
   }
 
-  
+  traerPlaniAll(): Observable<any> {
+    return this.http.get<any>(this.apiUrlBase + '/traerPlanificacion');
+  }
+
+  borrarPlani(idPlan: number): Observable<any> {
+    const url = `${this.apiUrlBase}/borrarPlani/${idPlan}`;
+    return this.http.delete<any>(url);
+  }
 
 }

@@ -38,7 +38,7 @@ export class LoginComponent {
                 icon: 'success',
                 confirmButtonText: 'Ok',
               }).then(() => {
-                this.router.navigate(['main']);
+                this.router.navigate(['main/home']);
               });
             } else {
               Swal.fire({

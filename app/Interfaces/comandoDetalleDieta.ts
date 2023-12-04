@@ -4,7 +4,7 @@ export class ComandoDetalleDieta{
 
     
     idAlimento: number;
-    nombreAlimento?: string;
+    //nombreAlimento?: string;
     //idDieta?: number;
     porcentaje?: number;
 

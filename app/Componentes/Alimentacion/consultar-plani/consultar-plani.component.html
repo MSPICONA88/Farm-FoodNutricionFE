@@ -1,67 +1,97 @@
 <div class="container text-center">
-  <h1 class="display-4 font-weight-bold text-muted mb-5">Stock necesario</h1>
+    <h1 class="display-4 font-weight-bold text-muted mb-5">Consultar planificación</h1>
 </div>
-
-<h3 class="text-center">Control de stock alimentos</h3>
+<!-- <br>
+<h3 class="text-center">Listado de planes al día de hoy: {{fechaActual | date:'dd-MM-yyyy'}}</h3>
+<br> -->
 <br>
-
-
 <div class="row">
-
-  <div class="container col-4">
-    <input type="text" class="form-control" name="filtroStock" placeholder="Buscar por estado de Stock"
-      [(ngModel)]="filtroStock">
-  </div>
+    <!-- <div class="col-1"></div> -->
+    <div>
+        <table id="listado" class="table table-hover text-center">
+            <thead class="encabezado">
+                <tr class="text-muted text-center border-bottom border-success">
+                    <th scope="col">Id plan</th>
+                    <th scope="col">Id lote</th>
+                    <th scope="col">Especie</th>
+                    <th scope="col">Raza</th>
+                    <th scope="col">Dieta</th>
+                    <th scope="col">Fecha inicio</th>
+                    <th scope="col">Fecha fin</th>
+                    <th scope="col">Toneladas</th>
+                    <th scope="col">Cant animales</th>
+                    <th scope="col">Cant x día x animal</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class=" text-center border-bottom border-success" *ngFor="let plan of listaPlanes |  paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{plan?.idPlan}}</th>
+                    <td>{{ plan.idLote }}</td>
+                    <td>{{ plan.nombreEspecie }}</td>
+                    <td>{{ plan.raza }}</td>
+                    <td>{{ plan.nombreDieta }}</td>
+                    <td>{{ plan.fechaInicio| date:'dd-MM-yyyy' }}</td>
+                    <td>{{ plan.fechaFin | date:'dd-MM-yyyy' }}</td>
+                    <td class="text-right">{{ plan.cantToneladaDiaria | customNumber }}</td>
+                    <td class="text-right">{{ plan.cantidad | customNumber }}</td>
+                    <td class="text-right">{{ plan.cantPorDiaPorAnimal | customNumber}}</td>
+                    <td>
+                        <button class="btn btn-danger">
+                            <i class="bi bi-trash-fill" (click)="eliminarPlani(plan.idPlan)"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior"
+                    nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page"></pagination-controls>
+                    <br>
+    </div>
 
 </div>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <table id="listado" class="table table-hover align-middle">
-        <thead class="encabezado">
-          <tr class="text-muted text-center border-bottom border-success">
-            <th scope="col">Nombre de alimento</th>
-            <th scope="col">Stock actual</th>
-            <th scope="col">Stock necesario</th>
-            <th scope="col">Cantidad a comprar</th>
-            <th scope="col">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class=" text-center border-bottom border-success"
-            *ngFor="let stock of listadoStock | filtroStock: filtroStock |  paginate: { itemsPerPage: 10, currentPage: page }">
-            <td >{{ stock.nombreAlimento}}</td>
-            <td class="text-right">{{ stock.stockActual| customNumber }}</td>
-            <td class="text-right">{{ stock.stockNecesario| customNumber }}</td>
-            <td class="text-right">{{ stock.cantidadAComprar| customNumber }}</td>
-            <td>
-              <!-- <button class="btn btn-outline-primary">{{ stock.estado }}</button> -->
-              <!-- <span class="badge badge-sm bg-gradient-success">{{ stock.estado }}</span> -->
-              <button type="button" class="btn" [ngClass]="{
-                    'btn-outline-danger': stock.estado === 'SIN STOCK', 
-                    'btn-outline-warning': stock.estado === 'MUY BAJO',
-                    'btn-outline-primary': stock.estado === 'BAJO',
-                    'btn-outline-success': stock.estado === 'OK',
-                    'btn-outline-dark': stock.estado === 'SOBRESTOCK'}">
-                {{ stock.estado }}</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior"
-        nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
-        screenReaderPageLabel="page"></pagination-controls>
 
-      <div class="col-2"></div>
-      <!-- <div *ngFor="let dieta of dietas">
-    <h2>{{ dieta.nombreDieta }}</h2>
-    <p>Observación: {{ dieta.observacion }}</p>
-    <ul>
-      <li *ngFor="let alimento of dieta.alimentos">
-        {{ alimento.nombreAlimento }} - Porcentaje: {{ alimento.porcentaje }}
-      </li>
-    </ul>
-  </div> -->
+
+<!-- <div *ngIf="asigIdPlan" class="tag" [formGroup]="formularioGroup">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-3"></div>
+
+            <div class="col-6">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th class="col-2">Fecha de alimentación</th>
+                            <th class="col-2">Cantidad dispensada</th>
+                            <th class="col-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="date" class="form-control" formControlName="fechaAlimentacion">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" formControlName="toneladasDispensadas">
+                            </td>
+                            <td class="align-middle text-center">
+                                <button type="submit" class="btn btn-primary "
+                                    (click)="registrarAli()">Registrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+    <br>
+
+</div> -->

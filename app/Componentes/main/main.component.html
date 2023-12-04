@@ -16,7 +16,20 @@
         <!-- Menus List -->
         <div class="offcanvas offcanvas-start shadow" tabindex="-1" id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel" style="position: fixed;">
-          <div class="offcanvas-body" style="margin-top: 50px">
+
+          <div class="offcanvas-body">
+            <div routerLink="home" class="btn-group2 d-flex align-items-center"
+              style="margin-top: 20px; margin-bottom: 20px;">
+              <a class="text-dark text-decoration-none" aria-expanded="false">
+                <span class="logoicon">
+                  <i>
+                    <img routerLink="home" width="40px" height="40px" src="../../../assets/Imagenes/LogoFinal.png"
+                      alt="">
+                  </i>
+                </span>
+                <span routerLink="home" class="textnone" style="padding-left: 6px;"> Farm&FoodNutricion</span>
+              </a>
+            </div>
             <ul class="navbar-nav">
 
               <!-- MENU DIETAS -->
@@ -69,6 +82,9 @@
                         <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="registrarAli" href="#"><span
                               class="item-text ">Registrar alimentación</span></a></li>
+                              <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" routerLink="consultarPlani" href="#"><span
+                                  class="item-text ">Consultar planificación</span></a></li>
                       </div>
                     </div>
                   </div>
@@ -249,6 +265,23 @@
 
             </ul>
           </div>
+        </div>
+
+        <!-- <div >
+          <span class="usericon"><img width="30px" height="30px" src="../../../assets/Imagenes/LogoFinal.png"></span>
+          <span class="textnone text-white text-decoration-none">Farm&FoodNutricion</span>
+        </div> -->
+
+        <!-- En tu archivo de plantilla Angular -->
+        <div class="btn-group2 d-flex align-items-center">
+          <a class="text-white text-decoration-none" aria-expanded="false">
+            <span class="logoicon">
+              <i>
+                <img width="40px" height="40px" src="../../../assets/Imagenes/LogoFinal.png" alt="">
+              </i>
+            </span>
+            <span class="textnone" style="padding-left: 6px;"> Farm&FoodNutricion</span>
+          </a>
         </div>
 
         <div class="btn-group">

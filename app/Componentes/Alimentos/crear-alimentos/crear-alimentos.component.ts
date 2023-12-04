@@ -39,11 +39,11 @@ export class CreaAlimentosComponent {
     })
 
     this.alimento = new Alimento();
-    
+
   }
 
 
-  
+
 
   guardar2() {
     if (this.formularioGroup.valid) {
@@ -59,14 +59,16 @@ export class CreaAlimentosComponent {
               }).then(() => {
                 this.limpiarForm();
                 this.cargarListado();
-                
+
               });
-            } 
+            }
             else {
               Swal.fire({
                 title: respuesta.error,
                 icon: 'error',
                 confirmButtonText: 'Ok',
+              }).then(() => {
+                this.limpiarForm();
               });
             }
           },
@@ -78,9 +80,10 @@ export class CreaAlimentosComponent {
               confirmButtonText: 'Ok',
             });
           }
-        })  
-    )}
-    
+        })
+      )
+    }
+
   }
   limpiarForm() {
     this.formularioGroup.reset();
@@ -96,20 +99,23 @@ export class CreaAlimentosComponent {
       confirmButtonText: 'Si',
       cancelButtonText: 'No'
     }).then((result) => {
-      this.irAHome();
+      this.limpiarForm();
     })
 
-    this.irAHome();
+    // this.irAHome();
   }
 
   private irAHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['main/home']);
   }
 
   get controlNombre(): FormControl {
     return this.formularioGroup.controls['nombreAlimento'] as FormControl
   }
 
+  cancelarCarga() {
+
+  }
 
   cargarListado() {
     this.subscription.add(
@@ -131,7 +137,7 @@ export class CreaAlimentosComponent {
       )
     );
   }
-  
+
 }
 
 

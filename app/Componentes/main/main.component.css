@@ -230,3 +230,16 @@ button.accordion-button.collapsed.link.bi::before {
   margin-bottom: 10px;
   /* Ajusta el margen superior según sea necesario */
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.usericon img {
+  margin-right: 10px; /* Ajusta este valor según sea necesario */
+}
+
+.btn-group2 a {
+  display: flex;
+  align-items: center;
+}

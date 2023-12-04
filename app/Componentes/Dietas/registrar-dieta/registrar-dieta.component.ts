@@ -103,7 +103,7 @@ export class RegistrarDietaComponent implements OnInit {
   
 
   crearAlimento(){
-    this.router.navigate(['alimentos']);
+    this.router.navigate(['main/alimentos']);
   }
 
   limpiarForm(): void {

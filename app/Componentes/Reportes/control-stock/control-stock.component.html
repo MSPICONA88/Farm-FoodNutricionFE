@@ -1,0 +1,70 @@
+<div class="container text-center">
+  <h1 class="display-4 font-weight-bold text-muted mb-5">Stock necesario</h1>
+</div>
+
+<h3 class="text-center">Control de stock alimentos</h3>
+<br>
+
+
+<div class="row">
+
+  <div class="container col-4">
+    <input type="text" class="form-control" name="filtroStock" placeholder="Buscar por estado de Stock"
+      [(ngModel)]="filtroStock">
+  </div>
+
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <table id="listado" class="table table-hover align-middle">
+        <thead class="encabezado">
+          <tr class="text-muted text-center border-bottom border-success">
+            <th scope="col">Nombre de alimento</th>
+            <th scope="col">Stock actual</th>
+            <th scope="col">Stock necesario</th>
+            <th scope="col">Cantidad a comprar</th>
+            <th data-bs-toggle="tooltip" data-bs-title="Default tooltip" scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=" text-center border-bottom border-success"
+            *ngFor="let stock of listadoStock | filtroStock: filtroStock |  paginate: { itemsPerPage: 10, currentPage: page }">
+            <td>{{ stock.nombreAlimento}}</td>
+            <td class="text-right">{{ stock.stockActual| customNumber }}</td>
+            <td class="text-right">{{ stock.stockNecesario| customNumber }}</td>
+            <td class="text-right">{{ stock.cantidadAComprar| customNumber }}</td>
+            <td>
+              <!-- <button class="btn btn-outline-primary">{{ stock.estado }}</button> -->
+              <!-- <span class="badge badge-sm bg-gradient-success">{{ stock.estado }}</span> -->
+              <button type="button" class="btn" [ngClass]="{
+          'btn-outline-danger': stock.estado === 'SIN STOCK', 
+          'btn-outline-warning': stock.estado === 'MUY BAJO',
+          'btn-outline-primary': stock.estado === 'BAJO',
+          'btn-outline-success': stock.estado === 'OK',
+          'btn-outline-dark': stock.estado === 'SOBRESTOCK'
+        }" title="{{ getTooltipText(stock.estado) }}">
+                {{ stock.estado }}
+              </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior"
+        nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"></pagination-controls>
+
+      <div class="col-2"></div>
+      <!-- <div *ngFor="let dieta of dietas">
+    <h2>{{ dieta.nombreDieta }}</h2>
+    <p>Observación: {{ dieta.observacion }}</p>
+    <ul>
+      <li *ngFor="let alimento of dieta.alimentos">
+        {{ alimento.nombreAlimento }} - Porcentaje: {{ alimento.porcentaje }}
+      </li>
+    </ul>
+  </div> -->

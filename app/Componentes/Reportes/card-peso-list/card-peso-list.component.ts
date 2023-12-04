@@ -83,7 +83,7 @@ export class CardPesoListComponent {
           if (data!=null) {
             this.listaLotes = data.listaLotesPorEspecie;
             // this.pesoActualAprox= (this.listaLotes.pesoPromAnimal*this.listaLotes.cantidadActual)
-            // console.log(this.listaLotes)
+            console.log(this.listaLotes)
           }
           else {
             Swal.fire({

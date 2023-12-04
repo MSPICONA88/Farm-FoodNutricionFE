@@ -161,7 +161,7 @@ export class QuitarAnimalesComponent {
                         icon: 'success',
                         confirmButtonText: 'Ok',
                       }).then(() => {
-                        this.cargarLotes();
+                        this.cargarLotesDef();
                       });
                     }
                   },
