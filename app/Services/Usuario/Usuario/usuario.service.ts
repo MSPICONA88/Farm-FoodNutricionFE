@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { ComandoPassword } from 'src/app/Interfaces/comandoPassword';
 import { ComandoUsuario } from 'src/app/Interfaces/comandoUsuario';
 import { Usuario } from 'src/app/Interfaces/usuario';
 import { environment } from 'src/environments/environment';
@@ -58,6 +59,11 @@ export class UsuarioService {
     localStorage.setItem("userName", userName);
     localStorage.setItem("userRol", rol);
    
+  }
+
+  updatePass(idUsuario: number, comandoPass: ComandoPassword): Observable<any> {
+    const url = `${this.apiUrlBase}/cambiarContrasena${idUsuario}`;
+    return this.http.put(url, comandoPass);
   }
 
   /* AUTHENTICATION SERVICES */

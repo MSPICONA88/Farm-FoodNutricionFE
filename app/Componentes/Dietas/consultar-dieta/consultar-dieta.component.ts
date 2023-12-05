@@ -146,7 +146,7 @@ export class ConsultarDietaComponent {
   }
 
   crearDieta(){
-    this.router.navigate(['registrarDieta']);
+    this.router.navigate(['main/registrarDieta']);
   }
 
 

@@ -32,7 +32,8 @@ export class LoginComponent {
             if (data.ok) {
               this.loginServ.setToken(data.idUsuario, data.nombreUsuario, data.rol);
               console.log(data);
-              console.log(localStorage.getItem('token'));
+              console.log(this.loginServ.getToken());
+              console.log(this.loginServ.getRol());
               Swal.fire({
                 title: 'Bienvenido',
                 icon: 'success',

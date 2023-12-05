@@ -16,15 +16,19 @@ export class MainComponent {
   user = {} as ComandoLogin;
   token: string;
   logueado: boolean=false;
+  rol: string;
+  banderaAdm: boolean=false;
+  banderaVet: boolean=false;
+  banderaOpe: boolean=false;
 
   constructor(private router: Router, private userServ: UsuarioService) { 
     
   }
 
   ngOnInit(): void {
-    // this.router.navigate(['login']);
     this.setUserLogged();
-    // this.validacionLogueo();
+    this.getRol();
+    this.asignarBanderas();
   }
 
   logOut() {
@@ -52,6 +56,29 @@ export class MainComponent {
       this.logueado=true;
     }
   }
+
+  getRol(){
+    this.rol= this.userServ.getRol();
+  }
+
+  asignarBanderas() {
+    switch (this.rol) {
+      case 'Administrador':
+        this.banderaAdm = true;
+        break;
+      case 'Veterinario':
+        this.banderaVet = true;
+        break;
+      case 'Operario':
+        this.banderaOpe = true;
+        break;
+      // Agrega más casos según tus roles
+      default:
+        // Manejo para otros roles o cualquier otro caso
+        break;
+    }
+  }
+  
 
   // validacionLogueo(){
   //   this.userServ.authenticateUser(this.viewName).subscribe(

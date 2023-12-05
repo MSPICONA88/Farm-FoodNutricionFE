@@ -64,7 +64,7 @@
               </div>
 
               <!-- MENU ALIMENTACION -->
-              <div>
+              <div *ngIf="banderaAdm || banderaOpe">
                 <div class="accordion accordion-flush" id="accordionFlushExample3">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -92,7 +92,7 @@
               </div>
 
               <!-- MENU TRATAMIENTO -->
-              <div>
+              <div >
                 <div class="accordion accordion-flush" id="accordionFlushExample4">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -104,7 +104,7 @@
                     <div id="flush-collapseFour" class="accordion-collapse collapse link"
                       aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample4">
                       <div class="accordion-body">
-                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                        <li *ngIf="banderaAdm || banderaVet"><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="registrarTrat" href="#"><span
                               class="item-text ">Registrar tratamiento</span></a></li>
                         <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
@@ -129,17 +129,17 @@
                     <div id="flush-collapseSix" class="accordion-collapse collapse link"
                       aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample6">
                       <div class="accordion-body">
-                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                        <li *ngIf="banderaAdm || banderaOpe"><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="registrarLotes" href="#"><span
                               class="item-text ">Agregar lote</span></a></li>
                         <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="listaLotes" href="#"><span
                               class="item-text ">Consultar lotes</span></a></li>
-                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                        <li *ngIf="banderaAdm || banderaOpe"><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="consultarLotes" href="#"><span
                               class="item-text ">Actualizar lotes</span></a></li>
                         <!-- <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" routerLink="egresarLotes" href="#"><span class="item-text ">Egreso de lotes</span></a></li> -->
-                        <li><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
+                        <li *ngIf="banderaAdm || banderaOpe"><a class="list-group-item dropdown-item" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" routerLink="quitarAnimales" href="#"><span
                               class="item-text ">Quitar animales</span></a></li>
                         <!-- <li><a class="list-group-item dropdown-item" routerLink="modificarLotes" href="#"><span class="item-text ">Modificar lote</span></a></li> -->
@@ -150,7 +150,7 @@
               </div>
 
               <!-- MENU STOCK -->
-              <div>
+              <div *ngIf="banderaAdm || banderaOpe">
                 <div class="accordion accordion-flush" id="accordionFlushExample7">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -181,7 +181,7 @@
               </div>
 
               <!-- MENU REPORTES -->
-              <div>
+              <div *ngIf="banderaAdm || banderaOpe">
                 <div class="accordion accordion-flush" id="accordionFlushExample8">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -211,7 +211,7 @@
                 </div>
               </div>
               <!-- MENU USUARIOS -->
-              <div>
+              <div *ngIf="banderaAdm">
                 <div class="accordion accordion-flush" id="accordionFlushExample1">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -293,7 +293,8 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- <li><button class="dropdown-item" type="button"><i class="bi bi-lock-fill"></i> Change Password</button></li>
             <li><button class="dropdown-item" type="button"><i class="bi bi-gear-fill"></i> Admin Setion</button></li> -->
-            <li class="dropdown-item" type="label"><i class="bi bi-gear-wide-connected"></i> Rol: {{user.rol}}</li>
+            <li class="dropdown-item" type="label"><a>Rol: {{user.rol}}</a></li>
+            <li class="dropdown-item" type="label"><a routerLink="cambiarPass">Cambiar contraseña</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

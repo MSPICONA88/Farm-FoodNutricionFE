@@ -111,24 +111,10 @@ export class RegistrarDietaComponent implements OnInit {
     this.detallesDietaArray.clear();
   }
 
-  cancelar(): void {
-    Swal.fire({
-      title: '¿Está seguro que desea cancelar la operación?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí',
-      cancelButtonText: 'No'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.irAHome();
-      }
-    });
-  }
+  
 
   irAHome(): void {
-    this.router.navigate(['']);
+    this.router.navigate(['/home']);
   }
 
   getAlimentos(): void {

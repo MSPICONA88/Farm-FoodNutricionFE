@@ -1,0 +1,53 @@
+<h1 class="display-4 font-weight-bold text-center text-muted mb-5">
+    Cambiar contraseña
+</h1>
+
+<!-- CONTENEDOR DE LA PAGINA -->
+
+<div class="container" style="text-align: right;">
+    <div class="row">
+        <div class="col-sm-3"></div> <!--Espacio de margen izquierdo-->
+
+        <div class="col-sm-6"> <!-- Columnas principales del formulario con borde -->
+            <div class="border p-4 rounded mx-auto border-dark">
+                <form [formGroup]="formularioGroup" *ngIf="formularioGroup.value">
+
+                    <div class="container">
+                        <div class="mb-2 row">
+                            <label for="contrasenaActual" class="form-label col-sm-5 text-right col-form-label">Constraseña actual</label>
+                            <div class="col-xl-5">
+                                <input type="text" class="form-control" formControlName="contrasenaActual" id="contrasenaActual">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-2 row">
+                            <label for="nuevaContrasena" class="form-label col-sm-5 text-right col-form-label">Nueva contraseña</label>
+                            <div class="col-xl-5">
+                                <input type="text" class="form-control" formControlName="nuevaContrasena" id="nuevaContrasena">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-2 row">
+                            <label for="repetirNuevaContrasena" class="form-label col-sm-5 text-right col-form-label">Repetir nueva constraseña</label>
+                            <div class="col-xl-5">
+                                <input type="text" class="form-control" formControlName="repetirNuevaContrasena" id="repetirNuevaContrasena">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row mt-4 text-center">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+             <div class="col-sm-3"></div> <!--Espacio de margen derecho -->
+        </div>
+    </div>
+</div>
+

@@ -89,20 +89,11 @@ export class CreaAlimentosComponent {
     this.formularioGroup.reset();
   }
 
-  cancelar() {
-    Swal.fire({
-      title: '¿Está seguro que quiere cancelar la operación?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No'
-    }).then((result) => {
+  limpiar() {
+  
       this.limpiarForm();
-    })
-
-    // this.irAHome();
+    
+    
   }
 
   private irAHome() {
