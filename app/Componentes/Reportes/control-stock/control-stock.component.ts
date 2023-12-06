@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { StockReport } from 'src/app/Interfaces/stockReport';
 import { IngresoStockService } from 'src/app/Services/Stock/ingreso-stock.service';
 import Swal from 'sweetalert2';
+import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'app-control-stock',

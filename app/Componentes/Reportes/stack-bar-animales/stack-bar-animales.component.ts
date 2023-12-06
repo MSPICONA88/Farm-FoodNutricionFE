@@ -12,6 +12,9 @@ import { Chart, registerables } from 'chart.js';
 import { AnimalExistence } from 'src/app/Interfaces/animalExistence';
 import { ResultStock } from 'src/app/Interfaces/resultStock';
 import { AnimalData } from 'src/app/Interfaces/animalData';
+import html2canvas from 'html2canvas';
+import jsPDF, { ImageOptions } from 'jspdf';
+
 Chart.register(...registerables);
 
 
@@ -55,6 +58,7 @@ export class StackBarAnimalesComponent {
   cantData2: any[] = [];
   chartData2: any;
   razasPorEspecie: any[] = [];
+  miGrafico: any;
   private subscription = new Subscription();
 
   constructor(
@@ -213,9 +217,9 @@ export class StackBarAnimalesComponent {
     if (existingChart) {
       existingChart.destroy();
     }
-
+    
     // Crear el nuevo gráfico
-    new Chart(ctx, {
+    this.miGrafico=new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labelData,
@@ -242,9 +246,73 @@ export class StackBarAnimalesComponent {
       //   }
       // }
     });
+
+
   }
 
 
+  exportarPDF() {
+    const doc = new jsPDF();
+
+    // Obtener la fecha actual
+    const fechaExportacion = new Date();
+
+    // Formatear la fecha como "DD/MM/YYYY HH:mm:ss"
+    const fechaFormateada = `${fechaExportacion.toLocaleDateString()} ${fechaExportacion.toLocaleTimeString()}`;
+
+    // Obtener el elemento por ID
+    const stackedBarElement = document.getElementById('stackedBar');
+
+    if (stackedBarElement) {
+      // Agregar el título con la fecha de exportación
+      doc.text(`Animales disponibles - Exportado el ${fechaFormateada}`, 10, 10);
+
+      // Agregar las etiquetas dentro de las barras antes de convertir a imagen
+      const etiquetas = stackedBarElement.querySelectorAll('.chartjs-data-label');
+      etiquetas.forEach((etiqueta) => {
+        // Obtener las coordenadas relativas a la posición de la etiqueta dentro del documento
+        const rect = etiqueta.getBoundingClientRect();
+        const x = rect.left + window.scrollX - stackedBarElement.getBoundingClientRect().left;
+        const y = rect.top + window.scrollY - stackedBarElement.getBoundingClientRect().top;
+
+        // Utilizar textContent en lugar de innerText
+        const texto = etiqueta.textContent || "";
+
+        // Agregar la etiqueta al documento PDF
+        doc.text(texto, x, y);
+      });
+
+      // Agregar el contenido del HTML convertido a imagen con html2canvas
+      html2canvas(stackedBarElement).then((canvas) => {
+        // Ajustar el tamaño de la imagen
+        const width = 150; // Ajusta según tus necesidades
+        const height = (canvas.height / canvas.width) * width;
+
+        // Calcular las coordenadas para alinear la imagen en la parte superior del centro
+        const x = (doc.internal.pageSize.getWidth() - width) / 2;
+        const y = 30; // Puedes ajustar este valor según tus necesidades
+
+        const imgData = canvas.toDataURL('image/png');
+
+        // Añadir la imagen al documento con opciones de coordenadas y tamaño
+        const options: ImageOptions = {
+          imageData: imgData,
+          x: x,
+          y: y,
+          width: width,
+          height: height,
+        };
+
+        doc.addImage(options);
+
+        // Guardar el documento con un nombre que incluya la fecha
+        const nombreArchivo = `Animales_Disponibles_${fechaExportacion.getTime()}.pdf`;
+        doc.save(nombreArchivo);
+      });
+    } else {
+      console.error('Elemento no encontrado con el ID "stackedBar".');
+    }
+  }
 
   //funciona ok
   renderChart2() {

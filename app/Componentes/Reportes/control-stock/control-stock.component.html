@@ -45,7 +45,7 @@
           'btn-outline-primary': stock.estado === 'BAJO',
           'btn-outline-success': stock.estado === 'OK',
           'btn-outline-dark': stock.estado === 'SOBRESTOCK'
-        }" title="{{ getTooltipText(stock.estado) }}">
+        }" data-bs-toggle="tooltip" data-bs-placement="right" [title]="getTooltipText(stock.estado)">
                 {{ stock.estado }}
               </button>
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Chart } from 'chart.js';
+import jsPDF, { ImageOptions } from 'jspdf';
+import html2canvas from 'html2canvas';
 import { EspecieService } from 'src/app/Services/Lote/Especie/especie.service';
 
 @Component({
@@ -177,6 +179,55 @@ export class LineIngresoAnimalesComponent {
     }
   }
 
+   exportarPDF2() {
+    const doc = new jsPDF();
+
+    // Obtener la fecha actual
+    const fechaExportacion = new Date();
+
+    // Formatear la fecha como "DD/MM/YYYY HH:mm:ss"
+    const fechaFormateada = `${fechaExportacion.toLocaleDateString()} ${fechaExportacion.toLocaleTimeString()}`;
+
+    // Obtener el elemento por ID
+    const lineChartElement = document.getElementById('lineChart');
+
+    if (lineChartElement) {
+      // Agregar el título con la fecha de exportación
+      doc.text(`Ingreso de Animales - Exportado el ${fechaFormateada}`, 10, 10);
+
+      
+
+      // Agregar el contenido del HTML convertido a imagen con html2canvas
+      html2canvas(lineChartElement).then((canvas) => {
+        // Ajustar el tamaño de la imagen
+        const width = 150; // Ajusta según tus necesidades
+        const height = (canvas.height / canvas.width) * width;
+
+        // Calcular las coordenadas para alinear la imagen en la parte superior del centro
+        const x = (doc.internal.pageSize.getWidth() - width) / 2;
+        const y = 30; // Puedes ajustar este valor según tus necesidades
+
+        const imgData = canvas.toDataURL('image/png');
+
+        // Añadir la imagen al documento con opciones de coordenadas y tamaño
+        const options: ImageOptions = {
+          imageData: imgData,
+          x: x,
+          y: y,
+          width: width,
+          height: height,
+        };
+
+        doc.addImage(options);
+
+        // Guardar el documento con un nombre que incluya la fecha
+        const nombreArchivo = `Animales_Disponibles_${fechaExportacion.getTime()}.pdf`;
+        doc.save(nombreArchivo);
+      });
+    } else {
+      console.error('Elemento no encontrado con el ID "stackedBar".');
+    }
+}
 
 
 
@@ -184,6 +235,8 @@ export class LineIngresoAnimalesComponent {
 
 
 }
+
+
 
 
 

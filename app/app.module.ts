@@ -46,7 +46,7 @@ import { QuitarAnimalesComponent } from './Componentes/Lotes/quitar-animales/qui
 import { ListaLotesComponent } from './Componentes/Lotes/lista-lotes/lista-lotes.component';
 import { ConsultarPlaniComponent } from './Componentes/Alimentacion/consultar-plani/consultar-plani.component';
 import { CambiarPassComponent } from './Componentes/Usuarios/cambiar-pass/cambiar-pass.component';
-
+import { jsPDF } from "jspdf";
 
 
 

@@ -1,3 +1,9 @@
 .encabezado{
     background-color: #68d6b6 ;
   }
+
+
+  .chartjs-data-label {
+    position: absolute;
+    color: white; 
+  }
